@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2173242\\Desktop\\tp02\\Tp-02\\Tp-02\\Tp-02.csproj": {}
+    "C:\\Users\\2130875\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2173242\\Desktop\\tp02\\Tp-02\\Tp-02\\Tp-02.csproj": {
+    "C:\\Users\\2130875\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2173242\\Desktop\\tp02\\Tp-02\\Tp-02\\Tp-02.csproj",
+        "projectUniqueName": "C:\\Users\\2130875\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj",
         "projectName": "Tp-02",
-        "projectPath": "C:\\Users\\2173242\\Desktop\\tp02\\Tp-02\\Tp-02\\Tp-02.csproj",
-        "packagesPath": "C:\\Users\\2173242\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2173242\\Desktop\\tp02\\Tp-02\\Tp-02\\obj\\",
+        "projectPath": "C:\\Users\\2130875\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj",
+        "packagesPath": "C:\\Users\\2130875\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\2130875\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\2173242\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\2130875\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

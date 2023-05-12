@@ -1,0 +1,17 @@
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\bin\Debug\net6.0-windows\Tp-02.exe
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\bin\Debug\net6.0-windows\Tp-02.deps.json
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\bin\Debug\net6.0-windows\Tp-02.runtimeconfig.json
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\bin\Debug\net6.0-windows\Tp-02.dll
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\bin\Debug\net6.0-windows\Tp-02.pdb
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.csproj.AssemblyReference.cache
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp_02.FormGenerator.resources
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.csproj.GenerateResource.cache
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.AssemblyInfoInputs.cache
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.AssemblyInfo.cs
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.csproj.CoreCompileInputs.cache
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.dll
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\refint\Tp-02.dll
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.pdb
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\Tp-02.genruntimeconfig.cache
+C:\Users\2130875\Desktop\tp-02-oop\Tp-02\Tp-02\obj\Debug\net6.0-windows\ref\Tp-02.dll
