@@ -1,10 +1,15 @@
+using Tp_02.view;
+
 namespace Tp_02
 {
-    public partial class FormGenerator : Form
-    {
+    public partial class FormGenerator : Form {
+
+        private FormMap formMap;
         public FormGenerator()
         {
             InitializeComponent();
+            formMap = new FormMap();
+            formMap.formGenerator = this;
         }
 
         private void FormGenerator_Load(object sender, EventArgs e)
@@ -106,5 +111,39 @@ namespace Tp_02
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (formMap.IsDisposed)
+            {
+                formMap = new FormMap();
+                formMap.formGenerator = this;
+            }
+            formMap.Show();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

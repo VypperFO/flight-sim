@@ -4,5 +4,8 @@
     <Compile Update="view\FormGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="view\FormMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
