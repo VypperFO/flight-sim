@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp_02.model.Aircraft.SpecialAircraft
+namespace Tp_02.model.Aircrafts.TransportAircraft
 {
-    internal class ObserverAircraft
+    public class TransportAircraft : Aircraft
     {
+        protected int Capacity;
     }
 }

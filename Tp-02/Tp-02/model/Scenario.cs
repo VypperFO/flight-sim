@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tp_02.model
 {
-    internal class Scenario
+    public class Scenario
     {
+        public List<Airport>? AirportList { get; set; }
     }
 }

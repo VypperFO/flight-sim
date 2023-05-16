@@ -41,9 +41,11 @@ namespace Tp_02.view
             // panel1
             // 
             this.panel1.BackgroundImage = global::Tp_02.Properties.Resources.Fortnite_Map_Season_1__2_;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Location = new System.Drawing.Point(33, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1192, 1198);
+            this.panel1.Size = new System.Drawing.Size(1000, 1000);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
@@ -63,9 +65,8 @@ namespace Tp_02.view
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1255, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 25);
+            this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
             // 
             // FormMap
             // 

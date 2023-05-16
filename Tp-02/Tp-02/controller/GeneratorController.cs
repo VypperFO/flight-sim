@@ -12,6 +12,12 @@ namespace Tp_02.controller
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormGenerator());
+
+            /*XmlSerializer xs = new XmlSerializer(typeof(Scenario));
+            using (StreamWriter wr = new StreamWriter("scenario.xml"))
+            {
+                xs.Serialize(wr, p);
+            }*/
         }
     }
 }

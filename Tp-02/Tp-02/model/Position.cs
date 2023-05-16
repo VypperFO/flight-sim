@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tp_02.model
 {
-    internal class Position
+    public class Position
     {
+        public string GPSCoords{ get; set; }
     }
 }

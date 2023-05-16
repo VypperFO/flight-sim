@@ -145,5 +145,10 @@ namespace Tp_02
 
         }
 
+        public void setCoords()
+        {
+            textBox2­.Text = formMap.getCoords();
+        }
+
     }
 }

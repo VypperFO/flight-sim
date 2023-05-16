@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp_02.model.Aircraft.TransportAircraft
+namespace Tp_02.model.Aircrafts.TransportAircraft
 {
-    internal class TransportAircraft
+    public class CargoAircraft : Aircraft
     {
     }
 }

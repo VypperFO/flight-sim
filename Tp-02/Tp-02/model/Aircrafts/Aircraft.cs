@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp_02.model.Aircraft.SpecialAircraft
+namespace Tp_02.model.Aircrafts
 {
-    internal class TankAircraft
+    public class Aircraft
     {
+        protected int Speed;
+        protected int MaintenanceTime;
     }
 }
