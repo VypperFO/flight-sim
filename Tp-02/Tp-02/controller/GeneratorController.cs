@@ -1,23 +1,14 @@
 namespace Tp_02.controller
 {
-    internal static class Program
+    internal class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+
+        private FormGenerator Form;
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormGenerator());
-
-            /*XmlSerializer xs = new XmlSerializer(typeof(Scenario));
-            using (StreamWriter wr = new StreamWriter("scenario.xml"))
-            {
-                xs.Serialize(wr, p);
-            }*/
         }
     }
 }

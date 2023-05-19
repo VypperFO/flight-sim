@@ -2,9 +2,11 @@ using Tp_02.view;
 
 namespace Tp_02
 {
-    public partial class FormGenerator : Form {
+    public partial class FormGenerator : Form
+    {
 
         private FormMap formMap;
+
         public FormGenerator()
         {
             InitializeComponent();
@@ -117,7 +119,7 @@ namespace Tp_02
 
         }
 
-       
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -137,7 +139,7 @@ namespace Tp_02
 
         private void button3_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,5 +152,18 @@ namespace Tp_02
             textBox2­.Text = formMap.getCoords();
         }
 
+        private void listBox2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 0 && textBox2.Text.Length > 0 && textBox3.Text.Length > 0 && textBox4.Text.Length > 0 && textBox5.Text.Length > 0 && textBox6.Text.Length > 0 && textBox3.Text.All(char.IsDigit) && textBox4.Text.All(char.IsDigit) && textBox5.Text.All(char.IsDigit) && textBox6.Text.All(char.IsDigit))
+            {
+                listBox1.Items.Add(textBox1.Text + ", (" + textBox2.Text + ")," + textBox3.Text + ", " + textBox4.Text + ", " + textBox5.Text + ", " + textBox6.Text);
+                // TO DO CREATE airport in scenario
+            }
+        }
     }
 }
