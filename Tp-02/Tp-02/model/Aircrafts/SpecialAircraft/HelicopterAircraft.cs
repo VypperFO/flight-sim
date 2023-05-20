@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tp_02.model.Aircrafts.SpecialAircraft
 {
+    [Serializable]
     public class HelicopterAircraft : Aircraft
     {
+        public HelicopterAircraft() { }
     }
 }

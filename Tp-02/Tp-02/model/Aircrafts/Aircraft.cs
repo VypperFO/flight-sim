@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tp_02.model.Aircrafts
 {
+    [Serializable]
     public class Aircraft
     {
-        protected int Speed;
-        protected int MaintenanceTime;
+        public string Name { get; set; }
+        public int Capacity { get; set; }
+
+        public Aircraft() { }
     }
 }

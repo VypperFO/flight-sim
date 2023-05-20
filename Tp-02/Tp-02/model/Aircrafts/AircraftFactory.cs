@@ -15,7 +15,6 @@ namespace Tp_02.model.Aircrafts
 
         private AircraftFactory()
         {
-            // Private constructor to prevent direct instantiation
         }
 
         public static AircraftFactory GetAircraftFactory
@@ -28,19 +27,19 @@ namespace Tp_02.model.Aircrafts
             }
         }
 
-        public static Aircraft CreateAircraft(string type)
+        public Aircraft CreateAircraft(string type)
         {
             switch (type)
             {
-                case "passenger":
+                case "Passager":
                     return new PassengerAircraft();
-                case "cargo":
+                case "Cargo":
                     return new CargoAircraft();
-                case "tank":
+                case "Citerne":
                     return new TankAircraft();
-                case "observer":
+                case "Observateur":
                     return new ObserverAircraft();
-                case "helicopter":
+                case "Helicoptère":
                     return new HelicopterAircraft();
                 default:
                     throw new NotSupportedException($"Aircraft type {type} is not supported.");

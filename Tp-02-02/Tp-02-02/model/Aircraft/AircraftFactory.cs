@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tp_02_02.model.Aircraft.SpecialAircrafts;
-using Tp_02_02.model.Aircraft.TransportAircrafts;
+using Tp_02_02.model.Aircrafts.SpecialAircrafts;
+using Tp_02_02.model.Aircrafts.TransportAircrafts;
 
-namespace Tp_02_02.model.Aircraft
+namespace Tp_02_02.model.Aircrafts
 {
     public class AircraftFactory
     {

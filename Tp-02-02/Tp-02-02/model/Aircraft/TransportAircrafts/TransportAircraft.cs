@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp_02_02.model.Aircraft.TransportAircrafts
+namespace Tp_02_02.model.Aircrafts.TransportAircrafts
 {
     public class TransportAircraft : Aircraft
     {
         protected int Capacity;
-        protected TransportClient Destination;
+        //protected TransportClient Destination;
     }
 }

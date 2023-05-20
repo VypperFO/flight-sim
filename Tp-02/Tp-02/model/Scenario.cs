@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tp_02.model
+﻿namespace Tp_02.model
 {
+    [Serializable]
     public class Scenario
     {
-        public List<Airport>? AirportList { get; set; }
+        public List<Airport> AirportList { get; set; }
+
+        public Scenario()
+        {
+            AirportList = new List<Airport>();
+        }
     }
 }

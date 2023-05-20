@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2173242\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj": {}
+    "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2173242\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj": {
+    "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2173242\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj",
+        "projectUniqueName": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj",
         "projectName": "Tp-02-02",
-        "projectPath": "C:\\Users\\2173242\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj",
-        "packagesPath": "C:\\Users\\2173242\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2173242\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\obj\\",
+        "projectPath": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\Tp-02-02.csproj",
+        "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02-02\\Tp-02-02\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\2173242\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -58,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

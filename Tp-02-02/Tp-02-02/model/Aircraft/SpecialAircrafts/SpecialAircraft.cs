@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tp_02_02.model.Client.SpecialClient;
 
-namespace Tp_02_02.model.Aircraft.SpecialAircrafts
+namespace Tp_02_02.model.Aircrafts.SpecialAircrafts
 {
     public class SpecialAircraft : Aircraft
     {

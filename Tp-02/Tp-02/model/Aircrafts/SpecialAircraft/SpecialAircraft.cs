@@ -7,8 +7,14 @@ using Tp_02.model.Aircrafts;
 
 namespace Tp_02.model.Aircrafts.SpecialAircraft
 {
+    [Serializable]
     public class SpecialAircraft : Aircraft
     {
         protected Airport DepartureAirport;
+
+        public SpecialAircraft(Airport departureAirport)
+        {
+            DepartureAirport = departureAirport;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Tp_02.controller;
 using Tp_02.view;
 
 namespace Tp_02
@@ -6,6 +7,7 @@ namespace Tp_02
     {
 
         private FormMap formMap;
+        public GeneratorController GenController;
 
         public FormGenerator()
         {
@@ -109,11 +111,6 @@ namespace Tp_02
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -139,7 +136,7 @@ namespace Tp_02
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            GenController.GenerateScenario();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,11 +156,33 @@ namespace Tp_02
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0 && textBox2.Text.Length > 0 && textBox3.Text.Length > 0 && textBox4.Text.Length > 0 && textBox5.Text.Length > 0 && textBox6.Text.Length > 0 && textBox3.Text.All(char.IsDigit) && textBox4.Text.All(char.IsDigit) && textBox5.Text.All(char.IsDigit) && textBox6.Text.All(char.IsDigit))
+            string name = textBox1.Text;
+            string position = textBox2.Text;
+            string minPass = textBox3.Text;
+            string maxPass = textBox4.Text;
+            string minMerch = textBox5.Text;
+            string maxMerch = textBox6.Text;
+
+            if (name.Length > 0 && position.Length > 0 && minPass.Length > 0 && maxPass.Length > 0 && minMerch.Length > 0 && maxMerch.Length > 0 && minPass.All(char.IsDigit) && maxPass.All(char.IsDigit) && minMerch.All(char.IsDigit) && maxMerch.All(char.IsDigit) && Int32.Parse(minPass) < Int32.Parse(maxPass) && Int32.Parse(minMerch) < Int32.Parse(maxMerch))
             {
-                listBox1.Items.Add(textBox1.Text + ", (" + textBox2.Text + ")," + textBox3.Text + ", " + textBox4.Text + ", " + textBox5.Text + ", " + textBox6.Text);
+                listBox1.Items.Add(name + ", (" + position + ")," + minPass + ", " + maxPass + ", " + minMerch + ", " + maxMerch);
                 // TO DO CREATE airport in scenario
+                string[] airport = { name, position, minPass, maxPass, minMerch, maxMerch };
+                GenController.AddAirport(airport);
+                listBox1.SelectedIndex= 0;
+            } else
+            {
+                throw new Exception("Error");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string Name = textBox12.Text;
+            string Type = comboBox1.Text;
+            string Capacity = textBox7.Text;
+            string[] aircraft = { Name, Type, Capacity };
+            GenController.AddAirplane(listBox1.Text.Split(',')[0], aircraft);
         }
     }
 }
