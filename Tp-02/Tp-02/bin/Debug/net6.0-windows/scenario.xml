@@ -1,43 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <AirportList>
-    <Airport>
-      <Name>yul</Name>
-      <Coords>-55° 47' 59" O , 59° 42' 0" N</Coords>
-      <MinPassenger>1</MinPassenger>
-      <MaxPassenger>121</MaxPassenger>
-      <MinMerchandise>12</MinMerchandise>
-      <MaxMerchandise>122</MaxMerchandise>
-      <AircraftList>
-        <PassengerAircraft>
-          <Name>dfakwb</Name>
-          <Capacity>12</Capacity>
-        </PassengerAircraft>
-        <ObserverAircraft>
-          <Name>dwajbd</Name>
-          <Capacity>12</Capacity>
-        </ObserverAircraft>
-      </AircraftList>
-    </Airport>
-    <Airport>
-      <Name>yul2</Name>
-      <Coords>-55° 47' 59" O , 59° 42' 0" N</Coords>
-      <MinPassenger>1</MinPassenger>
-      <MaxPassenger>121</MaxPassenger>
-      <MinMerchandise>12</MinMerchandise>
-      <MaxMerchandise>122</MaxMerchandise>
-      <AircraftList>
-        <TankAircraft>
-          <Name>awdwd</Name>
-          <Capacity>12</Capacity>
-          <IsMissionDone>false</IsMissionDone>
-          <IsFull>false</IsFull>
-        </TankAircraft>
-        <CargoAircraft>
-          <Name>bsreg</Name>
-          <Capacity>12</Capacity>
-        </CargoAircraft>
-      </AircraftList>
-    </Airport>
-  </AirportList>
+  <AirportList />
 </Scenario>
