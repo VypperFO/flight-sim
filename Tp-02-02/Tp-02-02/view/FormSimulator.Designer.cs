@@ -28,141 +28,141 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label1 = new Label();
-            openFileDialog1 = new OpenFileDialog();
-            button1 = new Button();
-            button2 = new Button();
-            listBox1 = new ListBox();
-            label2 = new Label();
-            label3 = new Label();
-            listBox2 = new ListBox();
-            label5 = new Label();
-            listBox3 = new ListBox();
-            SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackgroundImage = Properties.Resources.Fortnite_Map_Season_1__2_;
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Location = new Point(14, 228);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(600, 600);
-            panel1.TabIndex = 0;
+            this.panel1.BackgroundImage = global::Tp_02_02.Properties.Resources.Fortnite_Map_Season_1__2_;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(14, 228);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(600, 600);
+            this.panel1.TabIndex = 0;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Simulation";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Simulation";
             // 
             // openFileDialog1
             // 
-            openFileDialog1.FileName = "openFileDialog1";
-            openFileDialog1.Filter = "XML files (*.XML)|*.XML|All files (*.*)|*.*";
-            openFileDialog1.FileOk += openFileDialog1_FileOk;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "XML files (*.XML)|*.XML|All files (*.*)|*.*";
             // 
             // button1
             // 
-            button1.Location = new Point(14, 27);
-            button1.Name = "button1";
-            button1.Size = new Size(456, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Selectionner fichier";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            this.button1.Location = new System.Drawing.Point(14, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(456, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Selectionner fichier";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
-            button2.Location = new Point(487, 27);
-            button2.Name = "button2";
-            button2.Size = new Size(127, 23);
-            button2.TabIndex = 3;
-            button2.Text = "Démarrer";
-            button2.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(487, 27);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Démarrer";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listBox1
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(14, 91);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 124);
-            listBox1.TabIndex = 4;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(14, 91);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 124);
+            this.listBox1.TabIndex = 4;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(14, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(58, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Aéroport";
-            label2.Click += label2_Click_1;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(14, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Aéroport";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(152, 73);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 7;
-            label3.Text = "Client";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(152, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Client";
             // 
             // listBox2
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(152, 91);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(318, 124);
-            listBox2.TabIndex = 6;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(152, 91);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(318, 124);
+            this.listBox2.TabIndex = 6;
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(487, 73);
-            label5.Name = "label5";
-            label5.Size = new Size(44, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Avions";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(487, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Avions";
             // 
             // listBox3
             // 
-            listBox3.FormattingEnabled = true;
-            listBox3.ItemHeight = 15;
-            listBox3.Location = new Point(487, 91);
-            listBox3.Name = "listBox3";
-            listBox3.Size = new Size(127, 124);
-            listBox3.TabIndex = 8;
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 15;
+            this.listBox3.Location = new System.Drawing.Point(487, 91);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(127, 124);
+            this.listBox3.TabIndex = 8;
             // 
             // FormSimulator
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(626, 840);
-            Controls.Add(label5);
-            Controls.Add(listBox3);
-            Controls.Add(label3);
-            Controls.Add(listBox2);
-            Controls.Add(label2);
-            Controls.Add(listBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label1);
-            Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "FormSimulator";
-            Text = "Simulateur de scénario";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(626, 840);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "FormSimulator";
+            this.Text = "Simulateur de scénario";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
