@@ -73,7 +73,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Selectionner fichier";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.SelectFileBtn_click);
             // 
             // button2
             // 
@@ -83,7 +83,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Démarrer";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Play_click);
             // 
             // listBox1
             // 

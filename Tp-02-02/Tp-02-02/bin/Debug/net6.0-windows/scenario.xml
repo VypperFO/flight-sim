@@ -3,40 +3,30 @@
   <AirportList>
     <Airport>
       <Name>yul</Name>
-      <Coords>-55° 47' 59" O , 59° 42' 0" N</Coords>
+      <Coords>-109° 48' 0" O , 60° 54' 0" N</Coords>
       <MinPassenger>1</MinPassenger>
-      <MaxPassenger>121</MaxPassenger>
-      <MinMerchandise>12</MinMerchandise>
-      <MaxMerchandise>122</MaxMerchandise>
+      <MaxPassenger>12</MaxPassenger>
+      <MinMerchandise>1</MinMerchandise>
+      <MaxMerchandise>12</MaxMerchandise>
       <AircraftList>
-        <PassengerAircraft>
-          <Name>dfakwb</Name>
+        <CargoAircraft>
+          <Name>asd</Name>
           <Capacity>12</Capacity>
-        </PassengerAircraft>
-        <ObserverAircraft>
-          <Name>dwajbd</Name>
-          <Capacity>12</Capacity>
-        </ObserverAircraft>
+        </CargoAircraft>
       </AircraftList>
     </Airport>
     <Airport>
       <Name>yul2</Name>
-      <Coords>-55° 47' 59" O , 59° 42' 0" N</Coords>
+      <Coords>89° 24' 0" E , -39° 35' 59" S</Coords>
       <MinPassenger>1</MinPassenger>
-      <MaxPassenger>121</MaxPassenger>
-      <MinMerchandise>12</MinMerchandise>
-      <MaxMerchandise>122</MaxMerchandise>
+      <MaxPassenger>12</MaxPassenger>
+      <MinMerchandise>1</MinMerchandise>
+      <MaxMerchandise>12</MaxMerchandise>
       <AircraftList>
-        <TankAircraft>
-          <Name>awdwd</Name>
+        <PassengerAircraft>
+          <Name>asd2</Name>
           <Capacity>12</Capacity>
-          <IsMissionDone>false</IsMissionDone>
-          <IsFull>false</IsFull>
-        </TankAircraft>
-        <CargoAircraft>
-          <Name>bsreg</Name>
-          <Capacity>12</Capacity>
-        </CargoAircraft>
+        </PassengerAircraft>
       </AircraftList>
     </Airport>
   </AirportList>

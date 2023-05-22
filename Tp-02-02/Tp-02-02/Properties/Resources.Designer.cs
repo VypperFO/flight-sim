@@ -63,6 +63,16 @@ namespace Tp_02_02.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Battle_bus_icon {
+            get {
+                object obj = ResourceManager.GetObject("Battle_bus_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fortnite_Map_Season_1__2_ {
             get {
                 object obj = ResourceManager.GetObject("Fortnite-Map-Season-1 (2)", resourceCulture);
