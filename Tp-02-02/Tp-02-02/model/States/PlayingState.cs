@@ -16,6 +16,7 @@ namespace Tp_02_02.model.States
 
         public override void Forward()
         {
+            scenario.speed = scenario.speed / 2;
             Console.WriteLine("Forward clicked");
         }
     }

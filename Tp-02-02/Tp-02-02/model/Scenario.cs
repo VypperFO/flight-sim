@@ -11,6 +11,7 @@ namespace Tp_02_02.model
     {
         public List<Airport> AirportList { get; set; }
         private State state;
+        public int speed { get; set; }
 
         public Scenario()
         {
@@ -18,6 +19,9 @@ namespace Tp_02_02.model
             AirportList = new List<Airport>();
         }
 
+        public Scenario playing() {
+            return this;
+        }
         public State GetState() { return state; }
 
         public void changeState(State state)

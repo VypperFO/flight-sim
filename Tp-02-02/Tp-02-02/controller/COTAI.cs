@@ -17,17 +17,24 @@ namespace Tp_02_02.controller
 
         private void init()
         {
+            scenario.speed = 1000;
+
             while (true)
             {
                 if (scenario.GetState() is PlayingState)
                 {
                     Console.WriteLine("cum");
+
+                    // toute la logique ce fait dans cette fonction lah
+                    scenario = scenario.playing();
+
+                    // TODO fonction update avion
                 } else
                 {
                     Console.WriteLine("not cum");
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(scenario.speed);
             }
         }
 
