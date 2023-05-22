@@ -17,31 +17,16 @@ namespace Tp_02_02.controller
 
         private void init()
         {
-            scenario.speed = 1000;
-
             while (true)
             {
-                if (scenario.GetState() is PlayingState)
-                {
-                    Console.WriteLine("cum");
-
-                    // toute la logique ce fait dans cette fonction lah
-                    scenario = scenario.playing();
-
-                    // TODO fonction update avion
-                } else
-                {
-                    Console.WriteLine("not cum");
-                }
-
-                Thread.Sleep(scenario.speed);
+                scenario.PerformOperations();
             }
         }
 
         public COTAI()
         {
-            scenario= new Scenario();
             ApplicationConfiguration.Initialize();
+            scenario= new Scenario();
             simulatorForm = new FormSimulator(this);
             Thread newThread = new(init);
             newThread.Start();
@@ -58,20 +43,11 @@ namespace Tp_02_02.controller
 
                 for (int i = 0; i < airports.Count; i++)
                 {
-                    Console.WriteLine(airports[i].Name + ", ");
-                    Console.WriteLine(simulatorForm.ConvertFromGPSToCoords(airports[i].Coords + ", "));
                     simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
-
-                    for (int j = 0; j < scenario.AirportList[i].AircraftList.Count; j++)
-                    {
-                        Console.WriteLine("\t- " + scenario.AirportList[i].AircraftList[j].Name);
-                    }
                 }
             }
 
             simulatorForm.SetPlayBtnEnable(true);
-
-            // Change state MUY IMPORTANTO
             scenario.changeState(new ReadyState(scenario));
         }
 

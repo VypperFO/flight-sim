@@ -11,7 +11,7 @@ namespace Tp_02_02.model
     {
         public List<Airport> AirportList { get; set; }
         private State state;
-        public int speed { get; set; }
+        public int speed = 1000;
 
         public Scenario()
         {
@@ -19,8 +19,14 @@ namespace Tp_02_02.model
             AirportList = new List<Airport>();
         }
 
-        public Scenario playing() {
-            return this;
+        public void PerformOperations() {
+            Thread.Sleep(speed);
+
+            if(state is PlayingState)
+            {
+                Console.WriteLine("cum");
+                PerformOperations();
+            }  
         }
         public State GetState() { return state; }
 
