@@ -1,5 +1,6 @@
-using Tp_02_02.controller.States;
+using System.Xml.Serialization;
 using Tp_02_02.model;
+using Tp_02_02.model.States;
 
 namespace Tp_02_02.controller
 {
@@ -7,47 +8,74 @@ namespace Tp_02_02.controller
     {
         public FormSimulator simulatorForm;
         public Scenario scenario;
-        private State state;
 
         [STAThread]
         static void Main()
         {
-            COTAI controller = new COTAI();
+            COTAI cotai = new COTAI();
+        }
+
+        private void init()
+        {
+            while (true)
+            {
+                if (scenario.GetState() is PlayingState)
+                {
+                    Console.WriteLine("cum");
+                } else
+                {
+                    Console.WriteLine("not cum");
+                }
+
+                Thread.Sleep(1000);
+            }
         }
 
         public COTAI()
         {
+            scenario= new Scenario();
             ApplicationConfiguration.Initialize();
-            state = new UnloadedState(this);
             simulatorForm = new FormSimulator(this);
+            Thread newThread = new(init);
+            newThread.Start();
             Application.Run(simulatorForm);
-        }
-
-        public void changeState(State state)
-        {
-            this.state = state;
-            Console.WriteLine($"State: {state}");
         }
 
         public void Load(string filePath)
         {
-            changeState(new UnloadedState(this));
-            state.Load(filePath);
+            XmlSerializer xs = new(typeof(Scenario));
+            using (StreamReader rd = new(filePath))
+            {
+                scenario = xs.Deserialize(rd) as Scenario;
+                List<Airport> airports = scenario.AirportList;
+
+                for (int i = 0; i < airports.Count; i++)
+                {
+                    Console.WriteLine(airports[i].Name + ", ");
+                    Console.WriteLine(simulatorForm.ConvertFromGPSToCoords(airports[i].Coords + ", "));
+                    simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
+
+                    for (int j = 0; j < scenario.AirportList[i].AircraftList.Count; j++)
+                    {
+                        Console.WriteLine("\t- " + scenario.AirportList[i].AircraftList[j].Name);
+                    }
+                }
+            }
+
+            simulatorForm.SetPlayBtnEnable(true);
+
+            // Change state MUY IMPORTANTO
+            scenario.changeState(new ReadyState(scenario));
         }
 
         public void Play()
         {
-            state.Play();
-        }
-
-        public void Stop()
-        {
-            state.Stop();
+            scenario.Play();
         }
 
         public void Forward()
         {
-            state.Forward();
+            scenario.Forward();
         }
     }
 }
