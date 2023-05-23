@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Xml.Serialization;
 using Tp_02_02.model;
 using Tp_02_02.model.States;
@@ -17,17 +18,15 @@ namespace Tp_02_02.controller
 
         private void init()
         {
-            while (true)
-            {
-                Thread.Sleep(scenario.speed);
-                State currentState = scenario.GetState();
+            Thread.Sleep(1000);
+            State currentState = scenario.GetState();
 
-                if (currentState is PlayingState)
-                {
-                    Console.WriteLine("cum");
-                    MoveAllPlanes();
-                    scenario = scenario.PerformOperations();
-                }
+            if (currentState is PlayingState)
+            {
+                Console.WriteLine("cum");
+                scenario = scenario.PerformOperations();
+                init();
+
             }
         }
 
@@ -36,8 +35,7 @@ namespace Tp_02_02.controller
             ApplicationConfiguration.Initialize();
             scenario = new Scenario();
             simulatorForm = new FormSimulator(this);
-            Thread newThread = new(init);
-            newThread.Start();
+            ThreadStart newThread = new(init);
             Application.Run(simulatorForm);
         }
 
