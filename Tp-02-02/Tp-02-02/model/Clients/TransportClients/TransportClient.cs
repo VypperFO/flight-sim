@@ -8,7 +8,8 @@ namespace Tp_02_02.model.Clients.TransportClients
 {
     public class TransportClient: Client
     {
-        protected Airport Destination;
+        public Airport Destination { get; set; }
+        public int NumberOfClients { get; set; }
 
         public TransportClient() { }
     }

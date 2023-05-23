@@ -50,7 +50,7 @@ namespace Tp_02_02.controller
 
                 for (int i = 0; i < airports.Count; i++)
                 {
-                    //airports[i].InjectClients(airports);
+                    airports[i].InjectClients(airports);
                     simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
                 }
             }

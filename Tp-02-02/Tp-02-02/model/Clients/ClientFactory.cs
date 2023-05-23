@@ -20,7 +20,7 @@ namespace Tp_02_02.model.Clients
             }
         }
 
-        public Client CreateClient(string clientType, Airport airportDestination)
+        public Client CreateClient(string clientType)
         {
             switch (clientType)
             {
@@ -31,9 +31,22 @@ namespace Tp_02_02.model.Clients
                 case "Observer":
                     return new ObserverClient();
                 case "Cargo":
-                    return new CargoClient(airportDestination);
+                    return new CargoClient();
                 case "Passenger":
-                    return new PassengerClient(airportDestination);
+                    return new PassengerClient();
+                default:
+                    throw new ArgumentException($"Invalid client type: {clientType}");
+            }
+        }
+
+        public TransportClient CreateTransportClient(string clientType)
+        {
+            switch (clientType)
+            {
+                case "Cargo":
+                    return new CargoClient();
+                case "Passenger":
+                    return new PassengerClient();
                 default:
                     throw new ArgumentException($"Invalid client type: {clientType}");
             }
