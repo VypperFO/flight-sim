@@ -4,13 +4,16 @@ using Tp_02.model.Aircrafts;
 
 namespace Tp_02.controller
 {
+    /// <summary>
+    ///  Genere, initialise et serialise tout ce qui va des le scenario.
+    /// </summary>
     public class GeneratorController
     {
 
-        FormGenerator FormGen;
-        Scenario scenario = new();
-        List<string> aircraftsNames;
-        List<string> airportsNames;
+        FormGenerator FormGen; // Formulaire du generateur
+        Scenario scenario = new(); // scenario qui sera serialiser
+        List<string> aircraftsNames; // liste de nom d'aeroport deja utiliser
+        List<string> airportsNames; // liste de nom d'avion deja utiliser
 
         [STAThread]
         static void Main()
@@ -18,6 +21,9 @@ namespace Tp_02.controller
             GeneratorController controller = new GeneratorController();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public GeneratorController()
         {
             ApplicationConfiguration.Initialize();
@@ -29,6 +35,10 @@ namespace Tp_02.controller
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="airport"></param>
         public void AddAirport(string[] airport)
         {
             Airport newAirport = new Airport();
