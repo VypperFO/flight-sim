@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using Tp_02_02.model.Aircrafts;
 using Tp_02_02.model.Aircrafts.SpecialAircrafts;
 using Tp_02_02.model.Aircrafts.TransportAircrafts;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Tp_02_02.model.Clients;
 
 namespace Tp_02_02.model
 {
@@ -27,6 +22,7 @@ namespace Tp_02_02.model
         [XmlArrayItem("PassengerAircraft", typeof(PassengerAircraft))]
         [XmlArrayItem("Aircraft", typeof(Aircraft))]
         public List<Aircraft> AircraftList { get; set; }
+        public List<Client> ClientDictionary { get; set; }
 
         public Airport()
         {
@@ -47,11 +43,38 @@ namespace Tp_02_02.model
         public override string ToString()
         {
             string temp = Name + "," + Coords.ToString() + "," + MinPassenger.ToString() + "," + MaxPassenger.ToString() + "," + MinMerchandise.ToString() + "," + MaxMerchandise.ToString() + "," + MinPassenger.ToString() + ".";
-            foreach(var item in AircraftList)
+            foreach (var item in AircraftList)
             {
                 temp += item.ToString() + ",";
             }
             return temp;
+        }
+
+        public void InjectClients(List<Airport> airports)
+        {
+            Random rand = new Random();
+            int randAirportIndex = rand.Next(airports.Count);
+            int randRangePassenger = rand.Next(MinPassenger, MaxPassenger);
+            int randRangeMerchandise = rand.Next(MinMerchandise, MaxMerchandise);
+            int randNumberIterations = rand.Next(1, 3);
+
+            ClientFactory clientFactory = ClientFactory.Instance;
+
+            for (int i = 0; i < randNumberIterations; i++)
+            {
+                Client passengerClient = clientFactory.CreateClient("Passenger", airports[randAirportIndex]);
+                Client merchandiseClient = clientFactory.CreateClient("Cargo", airports[randAirportIndex]);
+
+                ClientDictionary.Add(passengerClient);
+                ClientDictionary.Add(merchandiseClient);
+            }
+
+            for (int i = 0; i < airports.Count; i++)
+            {
+                Console.WriteLine($"Clients: {ClientDictionary[i]}");
+            }
+            // TODO add clients de facon aleatoire
+            // Type de clients a injecter: cargo et passager avec destination aleatoire
         }
     }
 }

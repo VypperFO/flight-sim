@@ -25,9 +25,8 @@ namespace Tp_02_02.controller
             {
                 Console.WriteLine("cum");
                 scenario = scenario.PerformOperations();
-                init();
-
             }
+            init();
         }
 
         public COTAI()
@@ -35,7 +34,8 @@ namespace Tp_02_02.controller
             ApplicationConfiguration.Initialize();
             scenario = new Scenario();
             simulatorForm = new FormSimulator(this);
-            ThreadStart newThread = new(init);
+            Thread newThread = new(init);
+            newThread.Start();
             Application.Run(simulatorForm);
         }
 
@@ -50,6 +50,7 @@ namespace Tp_02_02.controller
 
                 for (int i = 0; i < airports.Count; i++)
                 {
+                    //airports[i].InjectClients(airports);
                     simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
                 }
             }

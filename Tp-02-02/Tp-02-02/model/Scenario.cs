@@ -21,6 +21,11 @@ namespace Tp_02_02.model
         }
 
         public Scenario PerformOperations() {
+            // feux, observer et secours sont des clients injecter de facon aleatoire sur la map
+            // TODO feux aleatoire (1 a 2 par heure)
+            // TODO secours aleatoire (1 a 3 par heure)
+            // TODO observer aleatoire (1 par heure)
+
 
             return this;
         }
