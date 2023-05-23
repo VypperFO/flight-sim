@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj",
+      "projectUniqueName": "C:\\Users\\felix\\Desktop\\tp-02-oop2\\Tp-02\\Tp-02\\Tp-02.csproj",
       "projectName": "Tp-02",
-      "projectPath": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\Tp-02.csproj",
+      "projectPath": "C:\\Users\\felix\\Desktop\\tp-02-oop2\\Tp-02\\Tp-02\\Tp-02.csproj",
       "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\felix\\Desktop\\tp-02-oop\\Tp-02\\Tp-02\\obj\\",
+      "outputPath": "C:\\Users\\felix\\Desktop\\tp-02-oop2\\Tp-02\\Tp-02\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -167,7 +167,7 @@ namespace Tp_02
 
             if (name.Length > 0 && position.Length > 0 && minPass.Length > 0 && maxPass.Length > 0 && minMerch.Length > 0 && maxMerch.Length > 0 && minPass.All(char.IsDigit) && maxPass.All(char.IsDigit) && minMerch.All(char.IsDigit) && maxMerch.All(char.IsDigit) && Int32.Parse(minPass) < Int32.Parse(maxPass) && Int32.Parse(minMerch) < Int32.Parse(maxMerch))
             {
-                if (!GenController.ifExistAirportName(name))
+                if (!GenController.IsAirportNameExistent(name))
                 {
                     listBox1.Items.Add(name + ", (" + position + ")," + minPass + ", " + maxPass + ", " + minMerch + ", " + maxMerch);
                     listBox1.SetSelected(listBox1.Items.Count - 1, true);
@@ -200,7 +200,7 @@ namespace Tp_02
             {
                 if (Name.Length > 0 && Type.Length > 0 && Capacity.Length > 0 && Capacity.All(char.IsDigit))
                 {
-                    if (!GenController.ifExistAircraftName(Name))
+                    if (!GenController.IsAircraftNameExistent(Name))
                     {
                         listBox2.Items.Add(Name + "," + Type + ", " + Capacity);
                         GenController.AddAirplane(listBox1.Text.Split(',')[0], aircraft);
@@ -220,7 +220,7 @@ namespace Tp_02
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
-            List<string[]> aircraftList = GenController.getAirplanList(listBox1.Text.Split(',')[0]);
+            List<string[]> aircraftList = GenController.GetAirplanList(listBox1.Text.Split(',')[0]);
             foreach (string[] aircraft in aircraftList)
             {
                 string aircraftName = aircraft[0];

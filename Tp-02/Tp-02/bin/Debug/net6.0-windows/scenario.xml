@@ -2,31 +2,18 @@
 <Scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AirportList>
     <Airport>
-      <Name>yul</Name>
-      <Coords>-109° 48' 0" O , 60° 54' 0" N</Coords>
+      <Name>wd</Name>
+      <Coords>-48° 35' 59" O , 60° 0' 0" N</Coords>
       <MinPassenger>1</MinPassenger>
-      <MaxPassenger>12</MaxPassenger>
+      <MaxPassenger>11</MaxPassenger>
       <MinMerchandise>1</MinMerchandise>
-      <MaxMerchandise>12</MaxMerchandise>
+      <MaxMerchandise>11</MaxMerchandise>
       <AircraftList>
-        <CargoAircraft>
-          <Name>asd</Name>
-          <Capacity>12</Capacity>
-        </CargoAircraft>
-      </AircraftList>
-    </Airport>
-    <Airport>
-      <Name>yul2</Name>
-      <Coords>89° 24' 0" E , -39° 35' 59" S</Coords>
-      <MinPassenger>1</MinPassenger>
-      <MaxPassenger>12</MaxPassenger>
-      <MinMerchandise>1</MinMerchandise>
-      <MaxMerchandise>12</MaxMerchandise>
-      <AircraftList>
-        <PassengerAircraft>
-          <Name>asd2</Name>
-          <Capacity>12</Capacity>
-        </PassengerAircraft>
+        <ObserverAircraft>
+          <Name>wdw</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>-48° 35' 59" O , 60° 0' 0" N</DepartureAirport>
+        </ObserverAircraft>
       </AircraftList>
     </Airport>
   </AirportList>

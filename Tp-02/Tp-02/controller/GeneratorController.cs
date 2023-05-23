@@ -46,26 +46,18 @@ namespace Tp_02.controller
 
         public void AddAirplane(string airportName, string[] aircraft)
         {
-            Airport currentAirport = scenario.AirportList.FirstOrDefault(airport => airport.Name == airportName);
+            Airport ?currentAirport = scenario.AirportList.FirstOrDefault(airport => airport.Name == airportName);
 
             if (currentAirport != null)
             {
                 aircraftsNames.Add(aircraft[0]);
-                AircraftFactory aircraftFactory = AircraftFactory.GetAircraftFactory;
-                Aircraft newAircraft = aircraftFactory.CreateAircraft(aircraft[1]);
-                newAircraft.Name = aircraft[0];
-                newAircraft.Capacity = Int32.Parse(aircraft[2]);
-                currentAirport.AircraftList.Add(newAircraft);
 
-                for (int i = 0; i < scenario.AirportList.Count; i++)
-                {
-                    Console.WriteLine(scenario.AirportList[i].Name + ":");
-                    for (int j = 0; j < scenario.AirportList[i].AircraftList.Count; j++)
-                    {
-                        Console.WriteLine("\t- " + scenario.AirportList[i].AircraftList[j].Name);
-                    }
-                }
-                Console.WriteLine("------------------------------------------------------------------");
+                AircraftFactory aircraftFactory = AircraftFactory.GetAircraftFactory;
+                Aircraft newAircraft = aircraftFactory.CreateAircraft(aircraft[1], currentAirport.Coords);
+
+                newAircraft.Name = aircraft[0];
+                newAircraft.Capacity = int.Parse(aircraft[2]);
+                currentAirport.AircraftList.Add(newAircraft);
             }
             else
             {
@@ -82,7 +74,7 @@ namespace Tp_02.controller
             }
         }
 
-        public List<string[]> getAirplanList(string airportName)
+        public List<string[]> GetAirplanList(string airportName)
         {
             List<string[]> aircraftList = new List<string[]>();
             List<Aircraft> tempAircraftList = new List<Aircraft>();
@@ -122,7 +114,7 @@ namespace Tp_02.controller
             return aircraftList;
         }
 
-        public bool ifExistAircraftName(string aircraftName)
+        public bool IsAircraftNameExistent(string aircraftName)
         {
 
             if (aircraftsNames.Contains(aircraftName))
@@ -132,7 +124,7 @@ namespace Tp_02.controller
             return false;
         }
 
-        public bool ifExistAirportName(string airportName)
+        public bool IsAirportNameExistent(string airportName)
         {
 
             if (airportsNames.Contains(airportName))

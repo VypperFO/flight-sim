@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tp_02.model.Aircrafts.SpecialAircraft
+﻿namespace Tp_02.model.Aircrafts.SpecialAircraft
 {
     [Serializable]
-    public class TankAircraft : Aircraft
+    public class TankAircraft : SpecialAircraft
     {
-        public bool IsMissionDone;
-        public bool IsFull;
+        public bool IsMissionDone = false;
+        public bool IsFull = true;
 
         public TankAircraft() { }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using Tp_02.model.Aircrafts;
 using Tp_02.model.Aircrafts.SpecialAircraft;
 using Tp_02.model.Aircrafts.TransportAircraft;
@@ -28,18 +23,8 @@ namespace Tp_02.model
         [XmlArrayItem("Aircraft", typeof(Aircraft))]
         public List<Aircraft> AircraftList { get; set; }
 
-        public Airport() {
-            AircraftList = new List<Aircraft>();
-        }
-
-        public Airport(string name, string coords, int minPassenger, int maxPassenger, int minMerchandise, int maxMerchandise)
+        public Airport()
         {
-            Name = name;
-            Coords = coords;
-            MinPassenger = minPassenger;
-            MaxPassenger = maxPassenger;
-            MinMerchandise = minMerchandise;
-            MaxMerchandise = maxMerchandise;
             AircraftList = new List<Aircraft>();
         }
     }
