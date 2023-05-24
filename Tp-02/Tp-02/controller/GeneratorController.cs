@@ -10,10 +10,10 @@ namespace Tp_02.controller
     public class GeneratorController
     {
 
-        FormGenerator FormGen; // Formulaire du generateur
-        Scenario scenario = new(); // scenario qui sera serialiser
-        List<string> aircraftsNames; // liste de nom d'aeroport deja utiliser
-        List<string> airportsNames; // liste de nom d'avion deja utiliser
+        private FormGenerator FormGen; // Formulaire du generateur
+        private Scenario scenario = new(); // scenario qui sera serialiser
+        private List<string> aircraftsNames; // liste de nom d'aeroport deja utiliser
+        private List<string> airportsNames; // liste de nom d'avion deja utiliser
 
         [STAThread]
         static void Main()
