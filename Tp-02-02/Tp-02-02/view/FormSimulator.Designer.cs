@@ -39,6 +39,8 @@
             listBox2 = new ListBox();
             label5 = new Label();
             listBox3 = new ListBox();
+            button3 = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -122,6 +124,7 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(318, 124);
             listBox2.TabIndex = 6;
+            listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -143,11 +146,33 @@
             listBox3.TabIndex = 8;
             listBox3.SelectedIndexChanged += listBox3_SelectedIndexChanged;
             // 
+            // button3
+            // 
+            button3.Location = new Point(421, 56);
+            button3.Name = "button3";
+            button3.Size = new Size(49, 23);
+            button3.TabIndex = 10;
+            button3.Text = "|>";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(366, 56);
+            button4.Name = "button4";
+            button4.Size = new Size(49, 23);
+            button4.TabIndex = 11;
+            button4.Text = "<|";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // FormSimulator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(626, 840);
+            Controls.Add(button4);
+            Controls.Add(button3);
             Controls.Add(label5);
             Controls.Add(listBox3);
             Controls.Add(label3);
@@ -178,5 +203,7 @@
         private ListBox listBox2;
         private Label label5;
         private ListBox listBox3;
+        private Button button3;
+        private Button button4;
     }
 }

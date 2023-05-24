@@ -4,14 +4,20 @@ using Tp_02.model.Aircrafts.TransportAircraft;
 
 namespace Tp_02.model.Aircrafts
 {
+    /// <summary>
+    /// Factory d'aircraft
+    /// </summary>
     public class AircraftFactory
     {
-        private static AircraftFactory? factory;
+        private static AircraftFactory? factory; 
 
         private AircraftFactory()
         {
         }
 
+        /// <summary>
+        /// initalise le factory et le retourne
+        /// </summary>
         public static AircraftFactory GetAircraftFactory
         {
             get
@@ -22,6 +28,13 @@ namespace Tp_02.model.Aircrafts
             }
         }
 
+        /// <summary>
+        /// Creer un avions
+        /// </summary>
+        /// <param name="type">le type de l'avion</param>
+        /// <param name="airportGPS">les coordonnes gps de sont aeroport</param>
+        /// <returns>l'avion</returns>
+        /// <exception cref="NotSupportedException">empeche les type inexistant d'avion</exception>
         public Aircraft CreateAircraft(string type, string airportGPS)
         {
             switch (type)

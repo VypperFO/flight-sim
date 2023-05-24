@@ -18,12 +18,13 @@ namespace Tp_02_02.controller
 
         private void init()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(scenario.speed);
             State currentState = scenario.GetState();
 
             if (currentState is PlayingState)
             {
                 Console.WriteLine("cum");
+                MoveAllPlanes();
                 scenario = scenario.PerformOperations();
             }
             init();
@@ -41,6 +42,7 @@ namespace Tp_02_02.controller
 
         public void Load(string filePath)
         {
+            simulatorForm.clearListboxes();
             XmlSerializer xs = new(typeof(Scenario));
             using (StreamReader rd = new(filePath))
             {
@@ -69,7 +71,7 @@ namespace Tp_02_02.controller
             scenario.Forward();
         }
 
-        public string[] airportsToStrings()
+        public string[] AirportsToStrings()
         {
             List<Airport> airports = scenario.AirportList;
             String[] airportstring = new string[airports.Count];
@@ -84,12 +86,24 @@ namespace Tp_02_02.controller
         {
             for (int i = 0; i < scenario.AirportList.Count; i++)
             {
-                for (int j = 0; i < scenario.AirportList[i].AircraftList.Count; j++)
+                for (int j = 0; j < scenario.AirportList[i].AircraftList.Count; j++)
                 {
                     simulatorForm.MovePlane(scenario.AirportList[i].AircraftList[j].CurrentPosition);
+                    scenario.AirportList[i].AircraftList[j].CurrentPosition.X += 2;
+                    scenario.AirportList[i].AircraftList[j].CurrentPosition.Y -= 1;
                     Console.WriteLine($"Position: {scenario.AirportList[i].AircraftList[j].CurrentPosition}");
                 }
             }
+        }
+
+        public void IncreaseSpeed()
+        {
+            scenario.speed = (scenario.speed/2);
+        }
+
+        public void DecreaseSpeed()
+        {
+            scenario.speed = (scenario.speed*2);
         }
 
     }

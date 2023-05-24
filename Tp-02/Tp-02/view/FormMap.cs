@@ -1,16 +1,26 @@
 ﻿namespace Tp_02.view
 {
+    /// <summary>
+    /// formulaire contenant la map du monde 
+    /// </summary>
     public partial class FormMap : Form
     {
         public FormGenerator formGenerator;
-        private Point start;
+        private Point start; // coordonnes choisis par l'utilisateur sur la map
 
 
+        /// <summary>
+        /// initialise tout les components du formulaire
+        /// </summary>
         public FormMap()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// affiche les cordonnes du click de l'utilisateur
+        /// </summary>
+        /// <param name="e">event</param>
         private void ClickSelection(EventArgs e)
         {
 
@@ -20,27 +30,33 @@
             label1.Text = start.ToString();
         }
 
+        /// <summary>
+        /// ferme le form et set les coordonne dans le form generateur
+        /// </summary>
+        /// <param name="sender">qui a fait l'action</param>
+        /// <param name="e">event</param>
         private void button1_Click(object sender, EventArgs e)
         {
             formGenerator.setCoords();
             Close();
         }
 
+        /// <summary>
+        /// event listener quand la map est cliquer
+        /// </summary>
+        /// <param name="sender">qui a fait l'action</param>
+        /// <param name="e">event</param>
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             ClickSelection(e);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void FormMap_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// converti les coordonne x,y en coordonne gps
+        /// </summary>
+        /// <param name="coords">les coordonne sous form x,y</param>
+        /// <returns>>les coordonne sous form GPS</returns>
         private string convertCoordsToGPS(string coords)
         {
             float x = start.X;
@@ -168,6 +184,10 @@
             return "Try again";
         }
 
+        /// <summary>
+        /// transforme les coordonnes sous form gps
+        /// </summary>
+        /// <returns> les coordonnes sous form gps</returns>
         public string getCoords()
         {
             return convertCoordsToGPS(label1.Text);

@@ -5,6 +5,9 @@ using Tp_02.model.Aircrafts.TransportAircraft;
 
 namespace Tp_02.model
 {
+    /// <summary>
+    /// Classe airport permmetant de creer des aeroport d'avion
+    /// </summary>
     [Serializable]
     public class Airport
     {

@@ -22,7 +22,7 @@ namespace Tp_02.controller
         }
 
         /// <summary>
-        /// 
+        /// initialise le controlleur et ces donnees membre.
         /// </summary>
         public GeneratorController()
         {
@@ -36,7 +36,7 @@ namespace Tp_02.controller
         }
 
         /// <summary>
-        /// 
+        /// initalise une nouvelle aeroport et la met dans le scenario.
         /// </summary>
         /// <param name="airport"></param>
         public void AddAirport(string[] airport)
@@ -54,6 +54,12 @@ namespace Tp_02.controller
 
         }
 
+        /// <summary>
+        /// initalise une nouvelle avion et la met dans l'aeroport.
+        /// </summary>
+        /// <param name="airportName">nom de l'aeroport</param>
+        /// <param name="aircraft">donne de l'avion sous forme de tableau de string</param>
+        /// <exception cref="NullReferenceException">si l'avion ne contient aucune aeroport</exception>
         public void AddAirplane(string airportName, string[] aircraft)
         {
             Airport ?currentAirport = scenario.AirportList.FirstOrDefault(airport => airport.Name == airportName);
@@ -75,6 +81,9 @@ namespace Tp_02.controller
             }
         }
 
+        /// <summary>
+        /// serialise le scenario dans un fichier .xml.
+        /// </summary>
         public void GenerateScenario()
         {
             XmlSerializer xs = new XmlSerializer(typeof(Scenario));
@@ -84,6 +93,11 @@ namespace Tp_02.controller
             }
         }
 
+        /// <summary>
+        /// Donne tout les avions d'un certain aeroport
+        /// </summary>
+        /// <param name="airportName">nom de l'aeroport que l'on veux les avions</param>
+        /// <returns>une liste contenant tout les avions d'un aeroport</returns>
         public List<string[]> GetAirplanList(string airportName)
         {
             List<string[]> aircraftList = new List<string[]>();
@@ -124,6 +138,11 @@ namespace Tp_02.controller
             return aircraftList;
         }
 
+        /// <summary>
+        /// Regarde si le nom d'un avion est déja utiliser pour ne pas avoir de nom en doublons
+        /// </summary>
+        /// <param name="aircraftName">le nom de l'avion</param>
+        /// <returns>true si il est deja utiliser, false si il ne l'es pas</returns>
         public bool IsAircraftNameExistent(string aircraftName)
         {
 
@@ -134,6 +153,11 @@ namespace Tp_02.controller
             return false;
         }
 
+        /// <summary>
+        /// Regarde si le nom d'un aeroport est déja utiliser pour ne pas avoir de nom en doublons
+        /// </summary>
+        /// <param name="airportName">le nom de l'aeroport</param>
+        /// <returns>true si il est deja utiliser, false si il ne l'es pas</returns>
         public bool IsAirportNameExistent(string airportName)
         {
 

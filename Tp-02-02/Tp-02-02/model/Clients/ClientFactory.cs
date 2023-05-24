@@ -5,19 +5,8 @@ namespace Tp_02_02.model.Clients
 {
     public class ClientFactory
     {
-        private static ClientFactory instance;
-
-        private ClientFactory()
+        public ClientFactory()
         {
-        }
-
-        public static ClientFactory Instance
-        {
-            get
-            {
-                instance ??= new ClientFactory();
-                return instance;
-            }
         }
 
         public Client CreateClient(string clientType)

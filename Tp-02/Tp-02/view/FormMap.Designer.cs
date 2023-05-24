@@ -48,7 +48,6 @@ namespace Tp_02.view
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 600);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             panel1.MouseDown += panel1_MouseDown;
             // 
             // button1

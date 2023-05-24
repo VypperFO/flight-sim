@@ -1,8 +1,11 @@
 ﻿namespace Tp_02.model.Aircrafts.SpecialAircraft
 {
+    /// <summary>
+    /// Classe contenant les donnes membre necessaire pour les aircraft qui sont special
+    /// </summary>
     public class SpecialAircraft : Aircraft
     {
         public string DepartureAirport { get; set; }
-        public new int Capacity = 1;
+        public new int Capacity = 1; /// capacity de l'aircraft
     }
 }

@@ -14,6 +14,8 @@ namespace Tp_02_02
             InitializeComponent();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
             this.simulatorController = simulatorController;
         }
 
@@ -68,7 +70,7 @@ namespace Tp_02_02
             double latitude = ConvertToDecimalDegrees(latitudeDegrees, latitudeMinutes, latitudeSeconds);
             double longitude = ConvertToDecimalDegrees(longitudeDegrees, longitudeMinutes, longitudeSeconds);
 
-            Vector2 vector= new();
+            Vector2 vector = new();
             vector.X = (int)Math.Round(ConvertToX(longitude, mapWidth));
             vector.Y = (int)Math.Round(ConvertToY(latitude, mapHeight));
 
@@ -129,7 +131,11 @@ namespace Tp_02_02
             pictureBox.Image = image;
 
             pictureBox.Location = new Point((int)coords.X, (int)coords.Y);
-            panel1.Controls.Add(pictureBox);
+            if(panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+            }
+  
         }
 
         public void SetPlayBtnEnable(bool enabled)
@@ -163,18 +169,23 @@ namespace Tp_02_02
             if (button2.Text == "Démarrer")
             {
                 button2.Text = "Pause";
+                button3.Enabled = true;
+                button4.Enabled = true;
                 changed = true;
             }
             if (button2.Text == "Pause" && changed == false)
             {
                 button2.Text = "Démarrer";
+                button3.Enabled = false;
+                button4.Enabled = false;
+
             }
             simulatorController.Play();
         }
 
         public void setAirportsName()
         {
-            string[] airportsTotal = simulatorController.airportsToStrings();
+            string[] airportsTotal = simulatorController.AirportsToStrings();
             List<string> names = new List<string>();
             string[] temp;
             foreach (string airport in airportsTotal)
@@ -189,26 +200,50 @@ namespace Tp_02_02
 
         }
 
-        public void setAiports(string airportName)
+        public void setAircrafts(string airportName)
         {
-            string[] airportsTotal = simulatorController.airportsToStrings();
+            string[] airportsTotal = simulatorController.AirportsToStrings();
             List<string> names = new List<string>();
             string[] temp;
             string[] temp2;
             string[] temp3;
-            foreach (string airport in airportsTotal)
+            foreach (string item in airportsTotal)
             {
-                temp = airport.Split(".");
+                temp = item.Split(".");
                 temp2 = temp[1].Split(",");
-                temp3 = airport.Split(",");
+                temp3 = item.Split(",");
                 if (temp3[0] == airportName)
                 {
                     names.Add(temp2[0]);
                 }
             }
-            foreach (string airport in names)
+            foreach (string item in names)
             {
-                listBox3.Items.Add(airport);
+                listBox3.Items.Add(item);
+            }
+
+        }
+
+        public void setClients(string airportName)
+        {
+            string[] airportsTotal = simulatorController.AirportsToStrings();
+            string[] temp;
+            string[] temp2;
+            string[] temp3;
+
+            foreach (string item in airportsTotal)
+            {
+                temp = item.Split(",");
+                if (temp[0] == airportName)
+                {
+                    temp2 = item.Split(";");
+                    temp3 = temp2[1].Split(".");
+                    for (int i = 0; i < temp3.Count() - 1; i++)
+                    {
+                        listBox2.Items.Add(temp3[i]);
+                    }
+
+                }
             }
 
         }
@@ -220,8 +255,37 @@ namespace Tp_02_02
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listBox1.Text.Length > 0)
+            {
+
+                listBox3.Items.Clear();
+                listBox2.Items.Clear();
+                setAircrafts(listBox1.SelectedItem.ToString());
+                setClients(listBox1.SelectedItem.ToString());
+            }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        public void clearListboxes()
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
             listBox3.Items.Clear();
-            setAiports(listBox1.SelectedItem.ToString());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            simulatorController.IncreaseSpeed();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            simulatorController.DecreaseSpeed();
         }
     }
 }

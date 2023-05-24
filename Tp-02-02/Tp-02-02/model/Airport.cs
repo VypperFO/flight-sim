@@ -41,22 +41,12 @@ namespace Tp_02_02.model
             AircraftList = new List<Aircraft>();
         }
 
-        public override string ToString()
-        {
-            string temp = Name + "," + Coords.ToString() + "," + MinPassenger.ToString() + "," + MaxPassenger.ToString() + "," + MinMerchandise.ToString() + "," + MaxMerchandise.ToString() + "," + MinPassenger.ToString() + ".";
-            foreach (var item in AircraftList)
-            {
-                temp += item.ToString() + ",";
-            }
-            return temp;
-        }
-
         public void InjectClients(List<Airport> airports)
         {
             Random rand = new Random();
             int randNumberIterations = rand.Next(1, 6);
 
-            ClientFactory clientFactory = ClientFactory.Instance;
+            ClientFactory clientFactory = new();
 
             for (int i = 0; i < randNumberIterations; i++)
             {
@@ -64,6 +54,7 @@ namespace Tp_02_02.model
                 int randRangeMerchandise = rand.Next(MinMerchandise, MaxMerchandise);
 
                 TransportClient passengerClient = clientFactory.CreateTransportClient("Passenger");
+                /// ENLEVER QUE LA DESTINATION PEU ETRE SOIS MEME
                 passengerClient.Destination = airports[rand.Next(airports.Count)];
                 passengerClient.NumberOfClients = randRangePassenger;
 
@@ -73,18 +64,22 @@ namespace Tp_02_02.model
 
                 ClientList.Add(passengerClient);
                 ClientList.Add(merchandiseClient);
-
-                Console.WriteLine($"Client: Passenger\n  Clients:{passengerClient.ToString}");
-                Console.WriteLine($"Client: Merchandise\n  Clients:{merchandiseClient.ToString}");
-
             }
-            Console.WriteLine($"Airport: {Name}\n  Clients:{ClientList.Count}");
+        }
 
-
-
-
-            // TODO add clients de facon aleatoire
-            // Type de clients a injecter: cargo et passager avec destination aleatoire
+        public override string ToString()
+        {
+            string temp = Name + "," + Coords.ToString() + "," + MinPassenger.ToString() + "," + MaxPassenger.ToString() + "," + MinMerchandise.ToString() + "," + MaxMerchandise.ToString() + "," + MinPassenger.ToString() + ".";
+            foreach (var item in AircraftList)
+            {
+                temp += item.ToString() + ",";
+            }
+            temp += ";";
+            foreach (var item in ClientList)
+            {
+                temp += item.ToString();
+            }
+            return temp;
         }
     }
 }
