@@ -1,7 +1,6 @@
 using System.Numerics;
 using System.Security;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using Tp_02_02.controller;
 
 namespace Tp_02_02
@@ -9,9 +8,11 @@ namespace Tp_02_02
     public partial class FormSimulator : Form
     {
         private COTAI simulatorController;
+
         public FormSimulator(COTAI simulatorController)
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             button2.Enabled = false;
             button3.Enabled = false;
@@ -105,13 +106,24 @@ namespace Tp_02_02
         {
             Vector2 coords = ConvertFromGPSToCoords(gpsCoords);
             PictureBox pictureBox = new PictureBox();
-            Image image = Properties.Resources.Battle_bus_icon;
+            Image image = Properties.Resources.pngwing_com__1_;
+            pictureBox.BackColor = Color.Transparent;
             pictureBox.Image = image;
-
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Size = new Size(35, 35);
             pictureBox.Location = new Point((int)coords.X, (int)coords.Y);
-            panel1.Controls.Add(pictureBox);
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
 
+            }
+            else
+            {
+                panel1.Controls.Add(pictureBox);
+            }
             Label label = new Label();
+            // a mettre une size au label pour pas qui interfere avec les image davion
+            label.AutoSize = true;
             label.Text = name;
             label.Font = new Font("Arial", 12);
             label.BackColor = Color.Transparent;
@@ -120,22 +132,67 @@ namespace Tp_02_02
             int labelY = (int)coords.Y - 10; // y relative to the picturebox
             label.Location = new Point(labelX, labelY);
 
-            panel1.Controls.Add(label);
-            label.BringToFront();
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(label); }));
+                panel1.Invoke(new MethodInvoker(delegate { label.BringToFront(); }));
+            }
+            else
+            {
+                panel1.Controls.Add(label);
+                label.BringToFront();
+            }
+        }
+
+        public void PlaceFire(float GPSx, float GPSy)
+        {
+
+            PictureBox pictureBox = new PictureBox();
+            Image image = Properties.Resources.pngegg;
+            pictureBox.BackColor = Color.Transparent;
+            pictureBox.Image = image;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Size = new Size(35, 35);
+            pictureBox.Location = new Point((int)GPSx, (int)GPSy);
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+            }
+        }
+
+
+        public void PlaceRescue(float GPSx, float GPSy)
+        {
+
+            PictureBox pictureBox = new PictureBox();
+            Image image = Properties.Resources.pngwing_com__2_;
+            pictureBox.BackColor = Color.Transparent;
+            pictureBox.Image = image;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Size = new Size(35, 35);
+            pictureBox.Location = new Point((int)GPSx, (int)GPSy);
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+            }
         }
 
         public void MovePlane(Vector2 coords)
         {
             PictureBox pictureBox = new();
             Image image = Properties.Resources.Battle_bus_icon;
+            pictureBox.BackColor = Color.Transparent;
             pictureBox.Image = image;
+            pictureBox.Size = new Size(35, 35);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pictureBox.Location = new Point((int)coords.X, (int)coords.Y);
-            if(panel1.InvokeRequired)
+            if (panel1.InvokeRequired)
             {
                 panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+                panel1.Invoke(new MethodInvoker(delegate { pictureBox.BringToFront(); }));
             }
-  
+
         }
 
         public void SetPlayBtnEnable(bool enabled)
@@ -171,6 +228,7 @@ namespace Tp_02_02
                 button2.Text = "Pause";
                 button3.Enabled = true;
                 button4.Enabled = true;
+                button1.Enabled = false;
                 changed = true;
             }
             if (button2.Text == "Pause" && changed == false)
@@ -178,6 +236,7 @@ namespace Tp_02_02
                 button2.Text = "Démarrer";
                 button3.Enabled = false;
                 button4.Enabled = false;
+                button1.Enabled = true;
 
             }
             simulatorController.Play();
@@ -224,12 +283,29 @@ namespace Tp_02_02
 
         }
 
+        public void clearAll()
+        {
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Clear();}));
+            }
+        }
+
         public void setClients(string airportName)
         {
+            if (listBox2.InvokeRequired)
+            {
+                listBox2.Invoke(new MethodInvoker(delegate { listBox2.Items.Clear(); }));
+            }
+            else
+            {
+                listBox2.Items.Clear();
+            }
             string[] airportsTotal = simulatorController.AirportsToStrings();
             string[] temp;
             string[] temp2;
             string[] temp3;
+            string[] temp4;
 
             foreach (string item in airportsTotal)
             {
@@ -240,7 +316,16 @@ namespace Tp_02_02
                     temp3 = temp2[1].Split(".");
                     for (int i = 0; i < temp3.Count() - 1; i++)
                     {
-                        listBox2.Items.Add(temp3[i]);
+                        if (listBox2.InvokeRequired)
+                        {
+                            temp4 = temp3[i].Split(",");
+                            listBox2.Invoke(new MethodInvoker(delegate { listBox2.Items.Add(temp4[1] + " " + temp4[2] + " en direction de " + temp4[0]); }));
+                        }
+                        else
+                        {
+                            temp4 = temp3[i].Split(",");
+                            listBox2.Items.Add(temp4[1] + " " + temp4[2] + " en direction de " + temp4[0]);
+                        }
                     }
 
                 }
@@ -260,8 +345,8 @@ namespace Tp_02_02
 
                 listBox3.Items.Clear();
                 listBox2.Items.Clear();
-                setAircrafts(listBox1.SelectedItem.ToString());
-                setClients(listBox1.SelectedItem.ToString());
+                setAircrafts(listBox1.Text);
+                setClients(listBox1.Text);
             }
         }
 
@@ -278,6 +363,28 @@ namespace Tp_02_02
             listBox3.Items.Clear();
         }
 
+        public string getListbox1Selected()
+        {
+            string Text = String.Empty;
+            Invoke((MethodInvoker)delegate
+            {
+                Text = listBox1.GetItemText(listBox1.Text);
+            });
+            return Text;
+        }
+
+        public void setTime(string time)
+        {
+            if (label6.InvokeRequired)
+            {
+                label6.Invoke(new MethodInvoker(delegate { label6.Text = time; }));
+            }
+            else
+            {
+                label6.Text = time;
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             simulatorController.IncreaseSpeed();
@@ -286,6 +393,21 @@ namespace Tp_02_02
         private void button4_Click(object sender, EventArgs e)
         {
             simulatorController.DecreaseSpeed();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormSimulator_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

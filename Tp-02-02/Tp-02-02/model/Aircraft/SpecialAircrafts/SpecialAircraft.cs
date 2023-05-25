@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tp_02_02.model.Clients.SpecialClients;
+using System.Numerics;
 
 namespace Tp_02_02.model.Aircrafts.SpecialAircrafts
 {
@@ -12,4 +13,5 @@ namespace Tp_02_02.model.Aircrafts.SpecialAircrafts
         protected Airport DepartureAirport;
         protected SpecialClient Destination;
     }
+
 }

@@ -9,7 +9,11 @@
 
         public override string ToString()
         {
-            return Destination.Name + "," + NumberOfClients.ToString() + ".";
+            if (this is PassengerClient)
+            {
+                return Destination.Name + "," + NumberOfClients.ToString() + "," + "passager" + ".";
+            }
+            return Destination.Name + "," + NumberOfClients.ToString() + "," + "cargo" + ".";
         }
     }
 }

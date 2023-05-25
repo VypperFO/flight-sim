@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Tp_02_02.model.Aircrafts.States;
+using Tp_02_02.model.Clients.SpecialClients;
 
 namespace Tp_02_02.model.Aircrafts
 {
@@ -7,13 +8,44 @@ namespace Tp_02_02.model.Aircrafts
     {
         protected AircraftState state;
         public Vector2 CurrentPosition;
+        public Vector2 StartingPosition;
+        public Vector2 Destination;
         public string Name { get; set; }
         public int Capacity { get; set; }
+        public int speed { get; set; }
 
         public Aircraft() {
-            CurrentPosition.X = 0;
-            CurrentPosition.Y = 0;
+            speed = 20;
             state = new WaitingState(this);
+        }
+
+        public void GoTo(Vector2 targetPosition)
+        {
+            Console.WriteLine($"x: {CurrentPosition.X}, y: {CurrentPosition.Y}");
+
+            float distance = Vector2.Distance(CurrentPosition, targetPosition);
+            float step = speed / distance;
+
+            CurrentPosition = Vector2.Lerp(CurrentPosition, targetPosition, step);
+
+            if (Vector2WithinError(CurrentPosition, targetPosition, 5))
+            {
+                changeState(new WaitingState(this));
+                Console.WriteLine($"State changed: {GetState}");
+            }
+        }
+
+        public bool Vector2WithinError(Vector2 vector1, Vector2 vector2, float error)
+        {
+            float deltaX = Math.Abs(vector1.X - vector2.X);
+            float deltaY = Math.Abs(vector1.Y - vector2.Y);
+
+            return deltaX <= error && deltaY <= error;
+        }
+
+        public AircraftState GetState()
+        {
+            return state;
         }
 
         public void changeState(AircraftState state)
@@ -36,10 +68,7 @@ namespace Tp_02_02.model.Aircrafts
             state.DoMaintenance();
         }
 
-        // A CORRIGER CAR IL NE RETOURNE PAS LE TYPE NIS LA CAPACITE CAR ON A PAS LE TYPE
-        // DANS LES DONNE MEMBRE PIS LIVE JAI JUSTE BESOIN DU NOM SO SA VA RESTER DEMEME
-        // JUSQUA TEMPS QUON A BESOIN DES AUTRE DONNE MEMBRE EN STRING SE QUI METTONERAIS
-        // FORTEMENT JE PARLE DU OVVERIDE DU TOO STRING
+    
 
         public override string ToString()
         {

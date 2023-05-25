@@ -9,6 +9,6 @@ namespace Tp_02_02.model.Clients.SpecialClients
 {
     public class SpecialClient: Client
     {
-        protected Vector2 Destination;
+        public Vector2 Position { get; set; }
     }
 }

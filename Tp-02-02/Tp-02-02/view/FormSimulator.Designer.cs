@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label4 = new Label();
             label1 = new Label();
             openFileDialog1 = new OpenFileDialog();
             button1 = new Button();
@@ -41,16 +42,31 @@
             listBox3 = new ListBox();
             button3 = new Button();
             button4 = new Button();
+            label6 = new Label();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.Fortnite_Map_Season_1__2_;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label4);
             panel1.Location = new Point(14, 228);
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 600);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ActiveCaption;
+            label4.Location = new Point(510, 558);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 6;
             // 
             // label1
             // 
@@ -92,7 +108,7 @@
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(14, 91);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 124);
+            listBox1.Size = new Size(120, 109);
             listBox1.TabIndex = 4;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -122,7 +138,7 @@
             listBox2.ItemHeight = 15;
             listBox2.Location = new Point(152, 91);
             listBox2.Name = "listBox2";
-            listBox2.Size = new Size(318, 124);
+            listBox2.Size = new Size(318, 109);
             listBox2.TabIndex = 6;
             listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
             // 
@@ -142,7 +158,7 @@
             listBox3.ItemHeight = 15;
             listBox3.Location = new Point(487, 91);
             listBox3.Name = "listBox3";
-            listBox3.Size = new Size(127, 124);
+            listBox3.Size = new Size(127, 109);
             listBox3.TabIndex = 8;
             listBox3.SelectedIndexChanged += listBox3_SelectedIndexChanged;
             // 
@@ -166,11 +182,23 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ActiveCaption;
+            label6.Location = new Point(14, 210);
+            label6.Name = "label6";
+            label6.Size = new Size(0, 15);
+            label6.TabIndex = 12;
+            label6.Click += label6_Click;
+            // 
             // FormSimulator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(626, 840);
+            Controls.Add(label6);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(label5);
@@ -186,6 +214,9 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormSimulator";
             Text = "Simulateur de scénario";
+            Load += FormSimulator_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -205,5 +236,7 @@
         private ListBox listBox3;
         private Button button3;
         private Button button4;
+        private Label label4;
+        private Label label6;
     }
 }

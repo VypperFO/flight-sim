@@ -1,6 +1,8 @@
-using System.Diagnostics;
 using System.Xml.Serialization;
 using Tp_02_02.model;
+using Tp_02_02.model.Aircrafts;
+using Tp_02_02.model.Aircrafts.States;
+using Tp_02_02.model.Clients.SpecialClients;
 using Tp_02_02.model.States;
 
 namespace Tp_02_02.controller
@@ -9,6 +11,7 @@ namespace Tp_02_02.controller
     {
         public FormSimulator simulatorForm;
         public Scenario scenario;
+        public bool isSet;
 
         [STAThread]
         static void Main()
@@ -23,9 +26,38 @@ namespace Tp_02_02.controller
 
             if (currentState is PlayingState)
             {
-                Console.WriteLine("cum");
-                MoveAllPlanes();
+                simulatorForm.clearAll();
+                Console.WriteLine(scenario.time);
+                scenario.time = scenario.time + 60;
+                List<Airport> airports = scenario.AirportList;
+                for (int i = 0; i < airports.Count; i++)
+                {
+                    simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
+                }
+                foreach (Airport airport in airports)
+                {
+                    foreach (var aircraft in airport.AircraftList)
+                    {
+    
+                        if (aircraft.GetState() is FlyingState)
+                        {
+                            if (isSet == false)
+                            {
+                                simulatorForm.MovePlane(aircraft.StartingPosition);
+                                isSet = true;
+                            }
+                            else
+                            {
+                                simulatorForm.MovePlane(aircraft.CurrentPosition);
+                            }
+                        }
+                    }
+                }
                 scenario = scenario.PerformOperations();
+                simulatorForm.setClients(simulatorForm.getListbox1Selected());
+                placeFireOnMap();
+                placeRescueOnMap();
+                simulatorForm.setTime(scenario.giveMeTheTime());
             }
             init();
         }
@@ -48,8 +80,16 @@ namespace Tp_02_02.controller
             {
                 scenario = xs.Deserialize(rd) as Scenario;
                 List<Airport> airports = scenario.AirportList;
-                simulatorForm.setAirportsName();
+                foreach (Airport airport in airports)
+                {
+                    foreach (var aircraft in airport.AircraftList)
+                    {
+                        aircraft.StartingPosition = airport.ConvertFromGPSToCoords(airport.Coords);
+                        aircraft.CurrentPosition = airport.ConvertFromGPSToCoords(airport.Coords);
+                    }
 
+                }
+                simulatorForm.setAirportsName();
                 for (int i = 0; i < airports.Count; i++)
                 {
                     airports[i].InjectClients(airports);
@@ -82,28 +122,45 @@ namespace Tp_02_02.controller
             return airportstring;
         }
 
-        public void MoveAllPlanes()
+
+        public void placeFireOnMap()
         {
-            for (int i = 0; i < scenario.AirportList.Count; i++)
+            List<SpecialClient> SpecialClientList = scenario.SpecialClientList;
+            foreach (SpecialClient client in SpecialClientList)
             {
-                for (int j = 0; j < scenario.AirportList[i].AircraftList.Count; j++)
+                if (client.GetType().ToString() == "Tp_02_02.model.Clients.SpecialClients.FireClient")
                 {
-                    simulatorForm.MovePlane(scenario.AirportList[i].AircraftList[j].CurrentPosition);
-                    scenario.AirportList[i].AircraftList[j].CurrentPosition.X += 2;
-                    scenario.AirportList[i].AircraftList[j].CurrentPosition.Y -= 1;
-                    Console.WriteLine($"Position: {scenario.AirportList[i].AircraftList[j].CurrentPosition}");
+                    float GPSx = client.Position.X;
+                    float GPSy = client.Position.Y;
+                    simulatorForm.PlaceFire(GPSx, GPSy);
                 }
             }
+
+        }
+
+        public void placeRescueOnMap()
+        {
+            List<SpecialClient> SpecialClientList = scenario.SpecialClientList;
+            foreach (SpecialClient client in SpecialClientList)
+            {
+                if (client.GetType().ToString() == "Tp_02_02.model.Clients.SpecialClients.RescueClient")
+                {
+                    float GPSx = client.Position.X;
+                    float GPSy = client.Position.Y;
+                    simulatorForm.PlaceRescue(GPSx, GPSy);
+                }
+            }
+
         }
 
         public void IncreaseSpeed()
         {
-            scenario.speed = (scenario.speed/2);
+            scenario.speed = (scenario.speed / 2);
         }
 
         public void DecreaseSpeed()
         {
-            scenario.speed = (scenario.speed*2);
+            scenario.speed = (scenario.speed * 2);
         }
 
     }
