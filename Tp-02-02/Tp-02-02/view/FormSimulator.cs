@@ -287,7 +287,7 @@ namespace Tp_02_02
         {
             if (panel1.InvokeRequired)
             {
-                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Clear();}));
+                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Clear(); }));
             }
         }
 

@@ -30,7 +30,7 @@ namespace Tp_02_02.model.Aircrafts
 
             if (Vector2WithinError(CurrentPosition, targetPosition, 5))
             {
-                changeState(new WaitingState(this));
+                changeState(new MaintenanceState(this));
                 Console.WriteLine($"State changed: {GetState}");
             }
         }

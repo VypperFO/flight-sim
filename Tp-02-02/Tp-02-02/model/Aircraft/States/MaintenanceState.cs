@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tp_02_02.model.Aircrafts.States
+﻿namespace Tp_02_02.model.Aircrafts.States
 {
     public class MaintenanceState : AircraftState
     {
-        public MaintenanceState(Aircraft aircraft) 
+        public int startTime { get; set; }
+        public MaintenanceState(Aircraft aircraft)
         {
             this.aircraft = aircraft;
         }
 
         public override void DoMaintenance()
         {
-            throw new NotImplementedException();
+            var th = new Thread(ExecuteInForeground);
+            th.Start();
+            Thread.Sleep(1000);
+            Console.WriteLine("Main thread ({0}) exiting...",
+                              Thread.CurrentThread.ManagedThreadId);
         }
 
         public override void Fly()

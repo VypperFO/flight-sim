@@ -186,7 +186,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.ActiveCaption;
+            label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(14, 210);
             label6.Name = "label6";
             label6.Size = new Size(0, 15);
