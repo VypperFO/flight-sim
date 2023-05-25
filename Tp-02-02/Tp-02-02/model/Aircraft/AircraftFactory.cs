@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tp_02_02.model.Aircrafts.SpecialAircrafts;
+﻿using Tp_02_02.model.Aircrafts.SpecialAircrafts;
 using Tp_02_02.model.Aircrafts.TransportAircrafts;
 
 namespace Tp_02_02.model.Aircrafts

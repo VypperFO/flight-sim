@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
 using Tp_02_02.model;
 using Tp_02_02.model.Aircrafts;
-using Tp_02_02.model.Aircrafts.States;
+using Tp_02_02.model.Clients;
 using Tp_02_02.model.Clients.SpecialClients;
 using Tp_02_02.model.States;
 
@@ -28,20 +28,25 @@ namespace Tp_02_02.controller
             {
                 simulatorForm.clearAll();
                 Console.WriteLine(scenario.time);
-                scenario.time = scenario.time + 60;
                 List<Airport> airports = scenario.AirportList;
-                for (int i = 0; i < airports.Count; i++)
-                {
-                    simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
-                }
+                scenario.time = scenario.time + 60;
+                scenario = scenario.PerformOperations();
+                simulatorForm.setClients(simulatorForm.getListbox1Selected());
+                simulatorForm.setTime(scenario.giveMeTheTime());
+
                 foreach (Airport airport in airports)
                 {
-                    foreach (var aircraft in airport.AircraftList)
+                    simulatorForm.PlaceAirportsOnMap(airport.Coords, airport.Name);
+
+                    // Fonction pour afficher les feux et les secours
+                    // (!!! ATTENTION, TRES MAL OPTIMIZER CAR CREATION DE NOMBREUX OBJETS PictureBox ET Image !!!)
+                    //placeFireAndRescueOnMap(airport);
+
+                    foreach (Aircraft aircraft in airport.AircraftList)
                     {
-    
-                        if (aircraft.GetState() is FlyingState)
+                        if (aircraft.GetState().GetType().Name.Equals("FlyingState"))
                         {
-                            if (isSet == false)
+                            if (!isSet)
                             {
                                 simulatorForm.MovePlane(aircraft.StartingPosition);
                                 isSet = true;
@@ -49,15 +54,14 @@ namespace Tp_02_02.controller
                             else
                             {
                                 simulatorForm.MovePlane(aircraft.CurrentPosition);
+                                Point currentPosition = new((int)aircraft.StartingPosition.X, (int)aircraft.StartingPosition.Y);
+                                Point destinationPoint = new((int)aircraft.Destination.X, (int)aircraft.Destination.Y);
+                                simulatorForm.DrawLine(currentPosition, destinationPoint, GetAircraftLineColor(aircraft));
                             }
                         }
                     }
                 }
-                scenario = scenario.PerformOperations();
-                simulatorForm.setClients(simulatorForm.getListbox1Selected());
-                placeFireOnMap();
-                placeRescueOnMap();
-                simulatorForm.setTime(scenario.giveMeTheTime());
+
             }
             init();
         }
@@ -87,14 +91,11 @@ namespace Tp_02_02.controller
                         aircraft.StartingPosition = airport.ConvertFromGPSToCoords(airport.Coords);
                         aircraft.CurrentPosition = airport.ConvertFromGPSToCoords(airport.Coords);
                     }
+                    simulatorForm.PlaceAirportsOnMap(airport.Coords, airport.Name);
+                    airport.InjectClients(airports);
 
                 }
                 simulatorForm.setAirportsName();
-                for (int i = 0; i < airports.Count; i++)
-                {
-                    airports[i].InjectClients(airports);
-                    simulatorForm.PlaceOnMap(airports[i].Coords, airports[i].Name);
-                }
             }
 
             simulatorForm.SetPlayBtnEnable(true);
@@ -123,30 +124,23 @@ namespace Tp_02_02.controller
         }
 
 
-        public void placeFireOnMap()
+        public void placeFireAndRescueOnMap(Airport airport)
         {
-            List<SpecialClient> SpecialClientList = scenario.SpecialClientList;
-            foreach (SpecialClient client in SpecialClientList)
+            foreach (Client client in airport.ClientList)
             {
-                if (client.GetType().ToString() == "Tp_02_02.model.Clients.SpecialClients.FireClient")
+                if (client.GetType().Name.Equals("FireClient"))
                 {
-                    float GPSx = client.Position.X;
-                    float GPSy = client.Position.Y;
+                    SpecialClient specialClient = (SpecialClient)client;
+                    float GPSx = specialClient.Position.X;
+                    float GPSy = specialClient.Position.Y;
                     simulatorForm.PlaceFire(GPSx, GPSy);
                 }
-            }
-
-        }
-
-        public void placeRescueOnMap()
-        {
-            List<SpecialClient> SpecialClientList = scenario.SpecialClientList;
-            foreach (SpecialClient client in SpecialClientList)
-            {
-                if (client.GetType().ToString() == "Tp_02_02.model.Clients.SpecialClients.RescueClient")
+                if (client.GetType().Name.Equals("RescueClient"))
                 {
-                    float GPSx = client.Position.X;
-                    float GPSy = client.Position.Y;
+                    Console.WriteLine("salut");
+                    SpecialClient specialClient = (SpecialClient)client;
+                    float GPSx = specialClient.Position.X;
+                    float GPSy = specialClient.Position.Y;
                     simulatorForm.PlaceRescue(GPSx, GPSy);
                 }
             }
@@ -161,6 +155,26 @@ namespace Tp_02_02.controller
         public void DecreaseSpeed()
         {
             scenario.speed = (scenario.speed * 2);
+        }
+
+        private Color GetAircraftLineColor(Aircraft aircraft)
+        {
+            string aircraftType = aircraft.GetType().Name;
+            switch (aircraftType)
+            {
+                case "TankAircraft":
+                    return Color.Yellow;
+                case "HelicopterAircraft":
+                    return Color.Red;
+                case "ObserverAircraft":
+                    return Color.Gray;
+                case "PassengerAircraft":
+                    return Color.Green;
+                case "CargoAircraft":
+                    return Color.Blue;
+                default:
+                    return Color.Black;
+            }
         }
 
     }

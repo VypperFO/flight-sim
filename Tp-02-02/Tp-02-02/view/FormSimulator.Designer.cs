@@ -55,7 +55,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 600);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // label4
             // 
@@ -140,7 +139,6 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(318, 109);
             listBox2.TabIndex = 6;
-            listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -160,7 +158,6 @@
             listBox3.Name = "listBox3";
             listBox3.Size = new Size(127, 109);
             listBox3.TabIndex = 8;
-            listBox3.SelectedIndexChanged += listBox3_SelectedIndexChanged;
             // 
             // button3
             // 
@@ -186,12 +183,10 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(14, 210);
             label6.Name = "label6";
             label6.Size = new Size(0, 15);
             label6.TabIndex = 12;
-            label6.Click += label6_Click;
             // 
             // FormSimulator
             // 
@@ -214,7 +209,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormSimulator";
             Text = "Simulateur de scénario";
-            Load += FormSimulator_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

@@ -6,6 +6,7 @@ using Tp_02_02.model.Aircrafts.SpecialAircrafts;
 using Tp_02_02.model.Aircrafts.States;
 using Tp_02_02.model.Aircrafts.TransportAircrafts;
 using Tp_02_02.model.Clients;
+using Tp_02_02.model.Clients.SpecialClients;
 using Tp_02_02.model.Clients.TransportClients;
 
 namespace Tp_02_02.model
@@ -31,19 +32,8 @@ namespace Tp_02_02.model
         public Airport()
         {
             AircraftList = new List<Aircraft>();
+            ClientList = new List<Client>();
         }
-
-        public Airport(string name, string coords, int minPassenger, int maxPassenger, int minMerchandise, int maxMerchandise)
-        {
-            Name = name;
-            Coords = coords;
-            MinPassenger = minPassenger;
-            MaxPassenger = maxPassenger;
-            MinMerchandise = minMerchandise;
-            MaxMerchandise = maxMerchandise;
-            AircraftList = new List<Aircraft>();
-        }
-
 
         public List<Airport> RunAirport(List<Airport> airports)
         {
@@ -52,38 +42,59 @@ namespace Tp_02_02.model
             {
                 if (ClientList[i] is CargoClient)
                 {
-                    // find first cargo aircraft
-                    int cargoIndex = AircraftList.FindIndex(a => a is CargoAircraft && ((CargoAircraft)a).GetState() is not FlyingState);
-
+                    int cargoIndex = GetAircraftIndex("cargo");
                     TransportDeparture(airports, cargoIndex, i);
                 }
-
                 else if (ClientList[i] is PassengerClient)
                 {
-                    // find first cargo aircraft
-                    int passIndex = AircraftList.FindIndex(a => a is PassengerAircraft && ((PassengerAircraft)a).GetState() is not FlyingState);
-
+                    int passIndex = GetAircraftIndex("passenger");
                     TransportDeparture(airports, passIndex, i);
-
                 }
-
-                /*if (ClientList[i] is FireClient)
+                else if (ClientList[i] is RescueClient)
                 {
-                    // get the first tank plane, call togo() method, remove from current airport, add special client as destination
-                }*/
-
-
+                    int rescueIndex = GetAircraftIndex("helicopter");
+                    SpecialDeparture(airports, rescueIndex, i);
+                }
+                else if (ClientList[i] is ObserverClient)
+                {
+                    int observerIndex = GetAircraftIndex("observer");
+                    SpecialDeparture(airports, observerIndex, i);
+                }
+                else if (ClientList[i] is FireClient)
+                {
+                    int fireIndex = GetAircraftIndex("fire");
+                    SpecialDeparture(airports, fireIndex, i, true);
+                }
             }
 
             for (int i = 0; i < AircraftList.Count; i++)
             {
-                //if (AircraftList[i].GetState() is FlyingState)
-                //{
-                AircraftList[i].GoTo(AircraftList[i].Destination);
-                //}
+                if (AircraftList[i].GetState().GetType().Name.Equals("FlyingState"))
+                {
+                    AircraftList[i].GoTo(AircraftList[i].Destination);
+                }
             }
 
             return airports;
+        }
+
+        private int GetAircraftIndex(string aircraft)
+        {
+            switch (aircraft.ToLower())
+            {
+                case "helicopter":
+                    return AircraftList.FindIndex(a => a is HelicopterAircraft && ((HelicopterAircraft)a).GetState() is not FlyingState);
+                case "cargo":
+                    return AircraftList.FindIndex(a => a is CargoAircraft && ((CargoAircraft)a).GetState() is not FlyingState);
+                case "passenger":
+                    return AircraftList.FindIndex(a => a is PassengerAircraft && ((PassengerAircraft)a).GetState() is not FlyingState);
+                case "fire":
+                    return AircraftList.FindIndex(a => a is TankAircraft && ((TankAircraft)a).GetState() is not FlyingState);
+                case "observer":
+                    return AircraftList.FindIndex(a => a is ObserverAircraft && ((ObserverAircraft)a).GetState() is not FlyingState);
+                default:
+                    return -1;
+            }
         }
 
         private void TransportDeparture(List<Airport> airports, int aircraftIndex, int clientIndex)
@@ -91,18 +102,18 @@ namespace Tp_02_02.model
             if (aircraftIndex != -1)
             {
                 Aircraft aircraft = AircraftList[aircraftIndex];
-                TransportClient cargoClient = (TransportClient)ClientList[clientIndex];
+                TransportClient transportClient = (TransportClient)ClientList[clientIndex];
 
                 // Change state
                 aircraft.changeState(new FlyingState(aircraft));
-                Console.WriteLine($"State changed: {aircraft.GetState}");
+                //Console.WriteLine($"State changed: {aircraft.GetState}");
 
                 // Change destination
-                aircraft.Destination = ConvertFromGPSToCoords(cargoClient.Destination.Coords);
-                Console.WriteLine($"The plane {aircraft.Name} from {aircraft.StartingPosition} is now flying towards {aircraft.Destination}");
+                aircraft.Destination = ConvertFromGPSToCoords(transportClient.Destination.Coords);
+                // Console.WriteLine($"The plane {aircraft.Name} from {aircraft.StartingPosition} is now flying towards {aircraft.Destination}");
 
                 // Add plane to other airport
-                int airportDestinationIndex = airports.FindIndex(a => a.Name.Equals(cargoClient.Destination.Name, StringComparison.OrdinalIgnoreCase));
+                int airportDestinationIndex = airports.FindIndex(a => a.Name.Equals(transportClient.Destination.Name, StringComparison.OrdinalIgnoreCase));
                 airports[airportDestinationIndex].AircraftList.Add(aircraft);
 
                 // Remove client and plane
@@ -111,12 +122,49 @@ namespace Tp_02_02.model
             }
         }
 
+        private void SpecialDeparture(List<Airport> airports, int aircraftIndex, int clientIndex, bool IsFire = false)
+        {
+            if (aircraftIndex != -1)
+            {
+                SpecialAircraft aircraft = (SpecialAircraft)AircraftList[aircraftIndex];
+
+                if (!IsFire)
+                {
+                    SpecialClient specialClient = (SpecialClient)ClientList[clientIndex];
+
+                    // Change state
+                    aircraft.changeState(new FlyingState(aircraft));
+                    Console.WriteLine($"State of {aircraft.Name} changed: {aircraft.GetState().GetType().Name}");
+
+                    // Change destination
+                    aircraft.Destination = specialClient.Position;
+
+                    ClientList.RemoveAt(clientIndex);
+                }
+                else
+                {
+                    FireClient fireClient = (FireClient)ClientList[clientIndex];
+
+                    // Change state
+                    aircraft.changeState(new FlyingState(aircraft));
+
+                    // Change destination
+                    aircraft.Destination = fireClient.Position;
+
+                    fireClient.Intensity--;
+                    if (fireClient.Intensity == 0)
+                    {
+                        ClientList.RemoveAt(clientIndex);
+                    }
+                }
+            }
+        }
+
         public void InjectClients(List<Airport> airports)
         {
+            ClientFactory clientFactory = new();
             Random rand = new Random();
             int randNumberIterations = rand.Next(1, 6);
-
-            ClientFactory clientFactory = new();
 
             for (int i = 0; i < randNumberIterations; i++)
             {
@@ -138,9 +186,22 @@ namespace Tp_02_02.model
                 TransportClient merchandiseClient = clientFactory.CreateTransportClient("Cargo");
                 merchandiseClient.Destination = randAirport;
                 merchandiseClient.NumberOfClients = randRangeMerchandise;
+
                 ClientList.Add(passengerClient);
                 ClientList.Add(merchandiseClient);
             }
+        }
+
+        public bool contains(string aircraftType)
+        {
+            int index = GetAircraftIndex(aircraftType);
+
+            if (index != -1)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override string ToString()

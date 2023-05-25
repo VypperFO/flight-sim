@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tp_02_02.model.Aircrafts.States
+﻿namespace Tp_02_02.model.Aircrafts.States
 {
     public abstract class AircraftState
     {
@@ -14,9 +8,5 @@ namespace Tp_02_02.model.Aircrafts.States
         {
             this.aircraft = aircraft;
         }
-
-        public abstract void Fly();
-        public abstract void Wait();
-        public abstract void DoMaintenance();
     }
 }

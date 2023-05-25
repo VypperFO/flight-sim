@@ -5,10 +5,17 @@ using Tp_02_02.controller;
 
 namespace Tp_02_02
 {
+    /// <summary>
+    /// Classe du  formulaire du simulateur de scenario
+    /// </summary>
     public partial class FormSimulator : Form
     {
-        private COTAI simulatorController;
+        private COTAI simulatorController; // controlleur du form
 
+        /// <summary>
+        /// constructeur du form
+        /// </summary>
+        /// <param name="simulatorController">Controlleur du form</param>
         public FormSimulator(COTAI simulatorController)
         {
             InitializeComponent();
@@ -20,30 +27,31 @@ namespace Tp_02_02
             this.simulatorController = simulatorController;
         }
 
+        /// <summary>
+        /// Active le button demarer du scenario quand un fichier XML est choissis
+        /// </summary>
+        /// <param name="sender">objet qui a fait l'action</param>
+        /// <param name="e">evenet listener</param>
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             button1.Enabled = false;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Ouvre le dialog de choix de fichier pour choisir le scenario
+        /// </summary>
+        /// <param name="sender">>objet qui a fait l'action</param>
+        /// <param name="e">>evenet listener</param>
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        /// <summary>
+        /// Convertis les coordonnees de type GPS en coordonnes de type (X,Y)
+        /// </summary>
+        /// <param name="gpsCoords">les coordonnees sous forme GPS</param>
+        /// <returns>les coordonnees sous forme (X,Y)</returns>
         public Vector2 ConvertFromGPSToCoords(string gpsCoords)
         {
             string pattern = @"-?\d+";
@@ -79,30 +87,49 @@ namespace Tp_02_02
             return vector;
         }
 
+        /// <summary>
+        /// Convertis les degres en decimal
+        /// </summary>
+        /// <param name="degrees">degre qui serons transformer </param>
+        /// <param name="minutes">degre en minutes qui seront transformer </param>
+        /// <param name="seconds">degre en seconmds qui seront transformer</param>
+        /// <returns>les degres convertis en decimal</returns>
         private double ConvertToDecimalDegrees(double degrees, double minutes, double seconds)
         {
             double decimalDegrees = degrees + (minutes / 60) + (seconds / 3600);
             return decimalDegrees;
         }
 
+        /// <summary>
+        /// Convertis la longitude en coordone de map
+        /// </summary>
+        /// <param name="longitude">la longitude</param>
+        /// <param name="mapWidth">la largeur de la map</param>
+        /// <returns>la longitude convertis en coordonne de map</returns>
         private double ConvertToX(double longitude, int mapWidth)
         {
             double x = (longitude + 180) * (mapWidth / 360.0);
             return x;
         }
 
+        /// <summary>
+        /// Convertis la latitude en coordone de map
+        /// </summary>
+        /// <param name="latitude">la latitude</param>
+        /// <param name="mapHeight">la hauteur de la map</param>
+        /// <returns>la latitude convertis en coordonne de map</returns>
         private double ConvertToY(double latitude, int mapHeight)
         {
             double y = (90 - latitude) * (mapHeight / 180.0);
             return y;
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void PlaceOnMap(string gpsCoords, string name)
+        
+        /// <summary>
+        /// Place les aeroport et leur nom sur la map
+        /// </summary>
+        /// <param name="gpsCoords">Coordonne de l'aeroport</param>
+        /// <param name="name">nom de l'aeroport</param>
+        public void PlaceAirportsOnMap(string gpsCoords, string name)
         {
             Vector2 coords = ConvertFromGPSToCoords(gpsCoords);
             PictureBox pictureBox = new PictureBox();
@@ -122,7 +149,6 @@ namespace Tp_02_02
                 panel1.Controls.Add(pictureBox);
             }
             Label label = new Label();
-            // a mettre une size au label pour pas qui interfere avec les image davion
             label.AutoSize = true;
             label.Text = name;
             label.Font = new Font("Arial", 12);
@@ -142,8 +168,15 @@ namespace Tp_02_02
                 panel1.Controls.Add(label);
                 label.BringToFront();
             }
+
+            GC.Collect();
         }
 
+        /// <summary>
+        /// Place un feu sur la map
+        /// </summary>
+        /// <param name="GPSx">coordonne X du feu</param>
+        /// <param name="GPSy">coordonne Y du feu</param>
         public void PlaceFire(float GPSx, float GPSy)
         {
 
@@ -156,11 +189,17 @@ namespace Tp_02_02
             pictureBox.Location = new Point((int)GPSx, (int)GPSy);
             if (panel1.InvokeRequired)
             {
-                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+                panel1.Invoke(new MethodInvoker(delegate { 
+                    panel1.Controls.Add(pictureBox);
+                }));
             }
         }
 
-
+        /// <summary>
+        /// Place un rescue sur la map
+        /// </summary>
+        /// <param name="GPSx">>coordonne X du rescue</param>
+        /// <param name="GPSy">>coordonne Y du rescue</param>
         public void PlaceRescue(float GPSx, float GPSy)
         {
 
@@ -173,10 +212,17 @@ namespace Tp_02_02
             pictureBox.Location = new Point((int)GPSx, (int)GPSy);
             if (panel1.InvokeRequired)
             {
-                panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Add(pictureBox); }));
+                panel1.Invoke(new MethodInvoker(delegate {
+                    panel1.Controls.Add(pictureBox);
+                }));
             }
+
         }
 
+        /// <summary>
+        /// Deplace l'image d'un avion au coordonne donner en paramettre
+        /// </summary>
+        /// <param name="coords">coordonne de l'avion</param>
         public void MovePlane(Vector2 coords)
         {
             PictureBox pictureBox = new();
@@ -195,11 +241,20 @@ namespace Tp_02_02
 
         }
 
+        /// <summary>
+        /// Active ou desactive le bouton pour demarrer ou arreter la partis
+        /// </summary>
+        /// <param name="enabled">true pour l'activer, false pour le desactiver</param>
         public void SetPlayBtnEnable(bool enabled)
         {
             button2.Enabled = enabled;
         }
 
+        /// <summary>
+        ///  Load le fichier selectionner dans le dialogue
+        /// </summary>
+        /// <param name="sender">personne qui a fait l'action</param>
+        /// <param name="e">event listener</param>
         private void SelectFileBtn_click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -220,6 +275,11 @@ namespace Tp_02_02
             }
         }
 
+        /// <summary>
+        /// Desactive ou active les boutons en dependant de si le scenario roule ou non
+        /// </summary>
+        /// <param name="sender">personne qui a fait l'action</param>
+        /// <param name="e">event listener</param>
         private void Play_click(object sender, EventArgs e)
         {
             bool changed = false;
@@ -242,6 +302,9 @@ namespace Tp_02_02
             simulatorController.Play();
         }
 
+        /// <summary>
+        /// Met les noms des aeroport dans la listbox du form
+        /// </summary>
         public void setAirportsName()
         {
             string[] airportsTotal = simulatorController.AirportsToStrings();
@@ -259,6 +322,10 @@ namespace Tp_02_02
 
         }
 
+        /// <summary>
+        /// Met les avions de l'aeroport selectioner dans la listbox du form
+        /// </summary>
+        /// <param name="airportName">le nom de l'aeroport selectionner</param>
         public void setAircrafts(string airportName)
         {
             string[] airportsTotal = simulatorController.AirportsToStrings();
@@ -283,14 +350,23 @@ namespace Tp_02_02
 
         }
 
+        /// <summary>
+        /// Supprimer tout les controls du panel du form
+        /// </summary>
         public void clearAll()
         {
             if (panel1.InvokeRequired)
             {
                 panel1.Invoke(new MethodInvoker(delegate { panel1.Controls.Clear(); }));
             }
+
+            GC.Collect();
         }
 
+        /// <summary>
+        /// Met les clients de l'aeroport selectioner dans la listbox du form
+        /// </summary>
+        /// <param name="airportName">le nom de l'aeroport selectionner</param>
         public void setClients(string airportName)
         {
             if (listBox2.InvokeRequired)
@@ -332,12 +408,12 @@ namespace Tp_02_02
             }
 
         }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        /// <summary>
+        /// Change les listbox clients et avions en dependant de l'aeroport choissis.
+        /// </summary>
+        /// <param name="sender">personne qui a fait l'aciton</param>
+        /// <param name="e">event listener</param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.Text.Length > 0)
@@ -350,12 +426,9 @@ namespace Tp_02_02
             }
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
+        /// <summary>
+        /// Vide tout les listbox du form
+        /// </summary>
         public void clearListboxes()
         {
             listBox1.Items.Clear();
@@ -363,6 +436,10 @@ namespace Tp_02_02
             listBox3.Items.Clear();
         }
 
+        /// <summary>
+        /// Donne le texte selectionner dans le list box des aeroport 
+        /// </summary>
+        /// <returns></returns>
         public string getListbox1Selected()
         {
             string Text = String.Empty;
@@ -372,7 +449,11 @@ namespace Tp_02_02
             });
             return Text;
         }
-
+        
+        /// <summary>
+        /// Actualise le temps dans le form pour le temps du scenario
+        /// </summary>
+        /// <param name="time"></param>
         public void setTime(string time)
         {
             if (label6.InvokeRequired)
@@ -385,29 +466,40 @@ namespace Tp_02_02
             }
         }
 
+        /// <summary>
+        /// Accelere la vitesse du scenario
+        /// </summary>
+        /// <param name="sender">Personne qui a fait l'action</param>
+        /// <param name="e">Event listener</param>
         private void button3_Click(object sender, EventArgs e)
         {
             simulatorController.IncreaseSpeed();
         }
 
+        /// <summary>
+        /// decelere la vitesse du scenario
+        /// </summary>
+        /// <param name="sender">Personne qui a fait l'action</param>
+        /// <param name="e">Event listener</param>
         private void button4_Click(object sender, EventArgs e)
         {
             simulatorController.DecreaseSpeed();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// dessine la ligne du vol d'un avion
+        /// </summary>
+        /// <param name="startPoint">point de depart de la ligne</param>
+        /// <param name="endPoint">point de fin de la ligne<</param>
+        /// <param name="color">couleur de la ligne</param>
+        public void DrawLine(Point startPoint, Point endPoint, Color color)
         {
-
-        }
-
-        private void FormSimulator_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
+            using (Graphics graphics = panel1.CreateGraphics())
+            using (Pen pen = new Pen(color, 3))
+            {
+                graphics.DrawLine(pen, startPoint, endPoint);
+                pen.Dispose();
+            }
         }
     }
 }

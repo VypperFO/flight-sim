@@ -19,23 +19,23 @@ namespace Tp_02_02.model.Aircrafts
             state = new WaitingState(this);
         }
 
-        public void GoTo(Vector2 targetPosition)
+        public virtual void GoTo(Vector2 targetPosition)
         {
-            Console.WriteLine($"x: {CurrentPosition.X}, y: {CurrentPosition.Y}");
+            //Console.WriteLine($"Plane: {Name}, x: {CurrentPosition.X}, y: {CurrentPosition.Y}");
 
             float distance = Vector2.Distance(CurrentPosition, targetPosition);
             float step = speed / distance;
 
             CurrentPosition = Vector2.Lerp(CurrentPosition, targetPosition, step);
 
-            if (Vector2WithinError(CurrentPosition, targetPosition, 5))
+            if (Vector2WithinError(CurrentPosition, targetPosition, 10))
             {
-                changeState(new MaintenanceState(this));
-                Console.WriteLine($"State changed: {GetState}");
+                changeState(new WaitingState(this));
+                Console.WriteLine($"{Name} changed state to {GetState().GetType().Name}");
             }
         }
 
-        public bool Vector2WithinError(Vector2 vector1, Vector2 vector2, float error)
+        protected static bool Vector2WithinError(Vector2 vector1, Vector2 vector2, float error)
         {
             float deltaX = Math.Abs(vector1.X - vector2.X);
             float deltaY = Math.Abs(vector1.Y - vector2.Y);
@@ -52,23 +52,6 @@ namespace Tp_02_02.model.Aircrafts
         {
             this.state = state;
         }
-
-        public void Fly()
-        {
-            state.Fly();
-        }
-
-        public void Wait()
-        {
-            state.Wait();
-        }
-
-        public void DoMaintenance()
-        {
-            state.DoMaintenance();
-        }
-
-    
 
         public override string ToString()
         {

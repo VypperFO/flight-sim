@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tp_02_02.controller;
+﻿using System.Numerics;
 using Tp_02_02.model.Clients;
 using Tp_02_02.model.Clients.SpecialClients;
 using Tp_02_02.model.States;
-using System.Numerics;
 
 namespace Tp_02_02.model
 {
+    /// <summary>
+    /// Scenario contenant les aeroport,les avions et les clients
+    /// </summary>
     public class Scenario
     {
-        public List<Airport> AirportList { get; set; }
-        public List<SpecialClient> SpecialClientList { get; set; }
-        private State state;
-        public int speed { get; set; }
-        public double time { get; set; } // in seconds
+        public List<Airport> AirportList { get; set; } // liste de tout les aeroports dans le scenario
+        public List<SpecialClient> SpecialClientList { get; set; } // liste de tout les clients special dans le scenario
+        private State state; // etat du scenario 
+        public int speed { get; set; } // vitesse du scenario
+        public double time { get; set; } //temps du scenario en secondes
 
         public Scenario()
         {
@@ -27,45 +24,99 @@ namespace Tp_02_02.model
             AirportList = new List<Airport>();
         }
 
-        public Scenario PerformOperations() {
+        public Scenario PerformOperations()
+        {
             for (int i = 0; i < AirportList.Count; i++)
             {
                 AirportList = AirportList[i].RunAirport(AirportList);
             }
 
-            InjectSpecialClients(); 
+            InjectSpecialClients();
             InjectTransportClients();
 
             return this;
         }
 
+        public Airport getNearestAirport(Vector2 position, string type)
+        {
+            int index = 0;
+            float closest = 0;
+            float tempDistance;
+            bool isOk = false;
+            for (int i = 0; i < AirportList.Count; i++)
+            {
+                if (type.Equals("FireClient"))
+                {
+                    isOk = AirportList[i].contains("fire");
+                }
+                else if (type.Equals("RescueClient"))
+                {
+                    isOk = AirportList[i].contains("helicopter");
+                }
+                else if (type.Equals("ObserverClient"))
+                {
+                    isOk = AirportList[i].contains("observer");
+                }
+                else
+                {
+                    isOk = false;
+                }
+
+                if (isOk)
+                {
+                    Vector2 pos = AirportList[i].ConvertFromGPSToCoords(AirportList[i].Coords);
+                    tempDistance = Vector2.Distance(pos, position);
+                    if (closest == 0)
+                    {
+                        closest = tempDistance;
+                        index = i;
+                    }
+                    else if (tempDistance < closest)
+                    {
+                        closest = tempDistance;
+                        index = i;
+                    }
+
+
+                }
+            }
+            return AirportList[index];
+        }
+
+
+
         private void AssignEmergencyClients(SpecialClient emergencyClient)
         {
-            // TODO check nearest airport to the emergency
-            // TODO add emergency client to that airport
+            Airport closest = getNearestAirport(emergencyClient.Position, emergencyClient.GetType().Name);
+            if (closest != null)
+            {
+                closest.ClientList.Add(emergencyClient);
+            }
         }
 
         private void InjectSpecialClients()
         {
             ClientFactory clientFactory = new ClientFactory();
-            if(time % 1800 == 0)
+            if (time % 1800 == 0)
             {
+                Console.WriteLine("Fire request");
                 SpecialClient fireClient = clientFactory.CreateSpecialClientWithRandomPos("Fire");
-                SpecialClientList.Add(fireClient);
                 AssignEmergencyClients(fireClient);
             }
 
+            // CHANGE BACK TO 3600 THIS MESSSAGE IS APPROVED BY BARACK OBAMA. "I AM BARACK OBAMA AND I APPROVE THIS MESSAGE -_-"
             if (time % 3600 == 0)
             {
+                Console.WriteLine("Rescue request");
                 SpecialClient rescueClient = clientFactory.CreateSpecialClientWithRandomPos("Rescue");
-                SpecialClientList.Add(rescueClient);
                 AssignEmergencyClients(rescueClient);
             }
 
-            if (time%1200== 0)
+            if (time % 1200 == 0)
             {
+                Console.WriteLine("Observer request");
                 SpecialClient observerClient = clientFactory.CreateSpecialClientWithRandomPos("Observer");
-                SpecialClientList.Add(observerClient);
+                AssignEmergencyClients(observerClient);
             }
 
         }
@@ -85,7 +136,7 @@ namespace Tp_02_02.model
         {
             double f = time;
             TimeSpan t = TimeSpan.FromSeconds(f);
-            return string.Format("{0}:{1}:{2}:{3}", ((int)t.TotalHours), t.Minutes, t.Seconds,t.Milliseconds);
+            return string.Format("{0}:{1}:{2}:{3}", ((int)t.TotalHours), t.Minutes, t.Seconds, t.Milliseconds);
         }
 
         public State GetState() { return state; }
