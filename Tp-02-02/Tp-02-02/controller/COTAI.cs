@@ -7,11 +7,14 @@ using Tp_02_02.model.States;
 
 namespace Tp_02_02.controller
 {
+    /// <summary>
+    /// Controlleur du programme
+    /// </summary>
     public class COTAI
     {
-        public FormSimulator simulatorForm;
-        public Scenario scenario;
-        public bool isSet;
+        private FormSimulator simulatorForm; // form simulation du programme
+        private Scenario scenario; // scenario actuel du programme
+        private bool isSet; // si les avions on ete placer sur la map
 
         [STAThread]
         static void Main()
@@ -19,6 +22,24 @@ namespace Tp_02_02.controller
             COTAI cotai = new COTAI();
         }
 
+        /// <summary>
+        /// intialise le controlleur et le scenario
+        /// </summary>
+        public COTAI()
+        {
+            ApplicationConfiguration.Initialize();
+            scenario = new Scenario();
+            simulatorForm = new FormSimulator(this);
+            Thread newThread = new(init);
+            newThread.Start();
+            Application.Run(simulatorForm);
+        }
+
+        #region Main operations
+
+        /// <summary>
+        /// roule 1 tick de tout le programme a l'infinie
+        /// </summary>
         private void init()
         {
             Thread.Sleep(scenario.speed);
@@ -27,7 +48,6 @@ namespace Tp_02_02.controller
             if (currentState is PlayingState)
             {
                 simulatorForm.clearAll();
-                Console.WriteLine(scenario.time);
                 List<Airport> airports = scenario.AirportList;
                 scenario.time = scenario.time + 60;
                 scenario = scenario.PerformOperations();
@@ -61,21 +81,14 @@ namespace Tp_02_02.controller
                         }
                     }
                 }
-
             }
             init();
         }
 
-        public COTAI()
-        {
-            ApplicationConfiguration.Initialize();
-            scenario = new Scenario();
-            simulatorForm = new FormSimulator(this);
-            Thread newThread = new(init);
-            newThread.Start();
-            Application.Run(simulatorForm);
-        }
-
+        /// <summary>
+        /// initialise les aerport avion et clients au load du programme
+        /// </summary>
+        /// <param name="filePath">path du fichier choissis</param>
         public void Load(string filePath)
         {
             simulatorForm.clearListboxes();
@@ -102,16 +115,30 @@ namespace Tp_02_02.controller
             scenario.changeState(new ReadyState(scenario));
         }
 
+        #endregion
+
+        #region Utils
+
+        /// <summary>
+        /// dit au scenario de jouer
+        /// </summary>
         public void Play()
         {
             scenario.Play();
         }
-
+        
+        /// <summary>
+        /// dit au scenario davancer plus vite
+        /// </summary>
         public void Forward()
         {
             scenario.Forward();
         }
 
+        /// <summary>
+        /// transforme tout les string aeroport en tableau de string
+        /// </summary>
+        /// <returns>tout les aeroport sous forme de string dans un tableau</returns>
         public string[] AirportsToStrings()
         {
             List<Airport> airports = scenario.AirportList;
@@ -123,8 +150,11 @@ namespace Tp_02_02.controller
             return airportstring;
         }
 
-
-        public void placeFireAndRescueOnMap(Airport airport)
+        /// <summary>
+        /// place le rescue et les feux sur la carte
+        /// </summary>
+        /// <param name="airport">l'aeroport assigner a ces dernier</param>
+        private void placeFireAndRescueOnMap(Airport airport)
         {
             foreach (Client client in airport.ClientList)
             {
@@ -147,16 +177,27 @@ namespace Tp_02_02.controller
 
         }
 
+        /// <summary>
+        /// augmente la vitesse du programme
+        /// </summary>
         public void IncreaseSpeed()
         {
             scenario.speed = (scenario.speed / 2);
         }
 
+        /// <summary>
+        /// ralentie la vitesse du programme
+        /// </summary>
         public void DecreaseSpeed()
         {
             scenario.speed = (scenario.speed * 2);
         }
 
+        /// <summary>
+        /// donne la couleur que la ligne de vol doit etre en dependant du type d'avion
+        /// </summary>
+        /// <param name="aircraft">type d'avion</param>
+        /// <returns>la couleur de la ligne</returns>
         private Color GetAircraftLineColor(Aircraft aircraft)
         {
             string aircraftType = aircraft.GetType().Name;
@@ -177,5 +218,6 @@ namespace Tp_02_02.controller
             }
         }
 
+        #endregion 
     }
 }

@@ -17,11 +17,11 @@ namespace Tp_02_02.model
     public class Airport
     {
         public string Name { get; set; } // nom de l'aeroport
-        public string Coords { get; set; }
-        public int MinPassenger { get; set; }
-        public int MaxPassenger { get; set; }
-        public int MinMerchandise { get; set; }
-        public int MaxMerchandise { get; set; }
+        public string Coords { get; set; } // coordonne de l'aeroport
+        public int MinPassenger { get; set; } // minimum de passager dans l'aeroport
+        public int MaxPassenger { get; set; } // maximum de passager dans l'aeroport
+        public int MinMerchandise { get; set; } // minimum de marchandise dans l'aeroport
+        public int MaxMerchandise { get; set; } // maximum de marchandise dans l'aeroport
         [XmlArray("AircraftList")]
         [XmlArrayItem("HelicopterAircraft", typeof(HelicopterAircraft))]
         [XmlArrayItem("ObserverAircraft", typeof(ObserverAircraft))]
@@ -29,15 +29,25 @@ namespace Tp_02_02.model
         [XmlArrayItem("CargoAircraft", typeof(CargoAircraft))]
         [XmlArrayItem("PassengerAircraft", typeof(PassengerAircraft))]
         [XmlArrayItem("Aircraft", typeof(Aircraft))]
-        public List<Aircraft> AircraftList { get; set; }
-        public List<Client> ClientList { get; set; }
+        public List<Aircraft> AircraftList { get; set; } // list des avions dans l'aeroport
+        public List<Client> ClientList { get; set; } // list des clients dans l'aeroport
 
+        /// <summary>
+        /// initalise les donnes membre de l'aeroport
+        /// </summary>
         public Airport()
         {
             AircraftList = new List<Aircraft>();
             ClientList = new List<Client>();
         }
 
+        #region Main operations
+
+        /// <summary>
+        ///  fait rouler les aeroport du scenario pour un tick 
+        /// </summary>
+        /// <param name="airports">liste des aeroport du scenario</param>
+        /// <returns>la liste des aeroport apres les changement</returns>
         public List<Airport> RunAirport(List<Airport> airports)
         {
             //double threshold = 0.8; // when at 80% of capacity
@@ -81,25 +91,12 @@ namespace Tp_02_02.model
             return airports;
         }
 
-        private int GetAircraftIndex(string aircraft)
-        {
-            switch (aircraft.ToLower())
-            {
-                case "helicopter":
-                    return AircraftList.FindIndex(a => a is HelicopterAircraft && ((HelicopterAircraft)a).GetState() is not FlyingState);
-                case "cargo":
-                    return AircraftList.FindIndex(a => a is CargoAircraft && ((CargoAircraft)a).GetState() is not FlyingState);
-                case "passenger":
-                    return AircraftList.FindIndex(a => a is PassengerAircraft && ((PassengerAircraft)a).GetState() is not FlyingState);
-                case "fire":
-                    return AircraftList.FindIndex(a => a is TankAircraft && ((TankAircraft)a).GetState() is not FlyingState);
-                case "observer":
-                    return AircraftList.FindIndex(a => a is ObserverAircraft && ((ObserverAircraft)a).GetState() is not FlyingState);
-                default:
-                    return -1;
-            }
-        }
-
+        /// <summary>
+        ///  envoie les clients dans un avion et la fait partir vers sa destination
+        /// </summary>
+        /// <param name="airports">liste de tout les aeroport dans le scenario</param>
+        /// <param name="aircraftIndex">index de l'avion qui fera voler les clients</param>
+        /// <param name="clientIndex">index des clients</param>
         private void TransportDeparture(List<Airport> airports, int aircraftIndex, int clientIndex)
         {
             if (aircraftIndex != -1)
@@ -132,6 +129,13 @@ namespace Tp_02_02.model
             }
         }
 
+        /// <summary>
+        /// fait voler un avions pour aller eteindre un feux jusqu'a temps qu'il le sois
+        /// </summary>
+        /// <param name="airports">liste de tout les aeroports dans le scenario</param>
+        /// <param name="aircraftIndex">index de l'avion choissis pour eteindre le feux</param>
+        /// <param name="clientIndex">index du clients</param>
+        /// <param name="IsFire">si le feux est eteint</param>
         private void SpecialDeparture(List<Airport> airports, int aircraftIndex, int clientIndex, bool IsFire = false)
         {
             if (aircraftIndex != -1)
@@ -144,7 +148,6 @@ namespace Tp_02_02.model
 
                     // Change state
                     aircraft.changeState(new FlyingState(aircraft));
-                    Console.WriteLine($"State of {aircraft.Name} changed: {aircraft.GetState().GetType().Name}");
 
                     // Change destination
                     aircraft.Destination = specialClient.Position;
@@ -170,6 +173,10 @@ namespace Tp_02_02.model
             }
         }
 
+        /// <summary>
+        /// injecte des clients a chaque aerport dans le scenario
+        /// </summary>
+        /// <param name="airports">liste de tout les aeroport du scenario</param>
         public void InjectClients(List<Airport> airports)
         {
             ClientFactory clientFactory = new();
@@ -189,11 +196,11 @@ namespace Tp_02_02.model
                     randAirport = airports[rand.Next(airports.Count)];
                 }
 
-                TransportClient passengerClient = clientFactory.CreateTransportClient("Passenger");
+                TransportClient passengerClient = ClientFactory.CreateTransportClient("Passenger");
                 passengerClient.Destination = randAirport;
                 passengerClient.NumberOfClients = randRangePassenger;
 
-                TransportClient merchandiseClient = clientFactory.CreateTransportClient("Cargo");
+                TransportClient merchandiseClient = ClientFactory.CreateTransportClient("Cargo");
                 merchandiseClient.Destination = randAirport;
                 merchandiseClient.NumberOfClients = randRangeMerchandise;
 
@@ -226,6 +233,39 @@ namespace Tp_02_02.model
             }
         }
 
+        #endregion
+
+        #region Utils
+
+        /// <summary>
+        /// donne l'index du nom d'un aircraft donner en paramettre
+        /// </summary>
+        /// <param name="aircraft">nom de l'aircraft que l'on cherche son index</param>
+        /// <returns>l'index de l'aircraft</returns>
+        private int GetAircraftIndex(string aircraft)
+        {
+            switch (aircraft.ToLower())
+            {
+                case "helicopter":
+                    return AircraftList.FindIndex(a => a is HelicopterAircraft && ((HelicopterAircraft)a).GetState() is not FlyingState);
+                case "cargo":
+                    return AircraftList.FindIndex(a => a is CargoAircraft && ((CargoAircraft)a).GetState() is not FlyingState);
+                case "passenger":
+                    return AircraftList.FindIndex(a => a is PassengerAircraft && ((PassengerAircraft)a).GetState() is not FlyingState);
+                case "fire":
+                    return AircraftList.FindIndex(a => a is TankAircraft && ((TankAircraft)a).GetState() is not FlyingState);
+                case "observer":
+                    return AircraftList.FindIndex(a => a is ObserverAircraft && ((ObserverAircraft)a).GetState() is not FlyingState);
+                default:
+                    return -1;
+            }
+        }
+
+        /// <summary>
+        /// Dit si un aeroport contient un certain type d'avion
+        /// </summary>
+        /// <param name="aircraftType">le type d'avion rechercher</param>
+        /// <returns>si l'aeroport contient ce type d'avion</returns>
         public bool contains(string aircraftType)
         {
             int index = GetAircraftIndex(aircraftType);
@@ -238,6 +278,10 @@ namespace Tp_02_02.model
             return false;
         }
 
+        /// <summary>
+        /// donne tout les donnes membre de l'aeroport sous forme de string
+        /// </summary>
+        /// <returns>tout les donnes membre de l'aeroport sous forme de string</returns>
         public override string ToString()
         {
             string temp = Name + "," + Coords.ToString() + "," + MinPassenger.ToString() + "," + MaxPassenger.ToString() + "," + MinMerchandise.ToString() + "," + MaxMerchandise.ToString() + "," + MinPassenger.ToString() + ".";
@@ -256,6 +300,11 @@ namespace Tp_02_02.model
             return temp;
         }
 
+        /// <summary>
+        /// Convertis les coordonnees de type GPS en coordonnes de type (X,Y)
+        /// </summary>
+        /// <param name="gpsCoords">les coordonnees sous forme GPS</param>
+        /// <returns>les coordonnees sous forme (X,Y)</returns>
         public Vector2 ConvertFromGPSToCoords(string gpsCoords)
         {
             string pattern = @"-?\d+";
@@ -291,22 +340,43 @@ namespace Tp_02_02.model
             return vector;
         }
 
+        /// <summary>
+        /// Convertis les degres en decimal
+        /// </summary>
+        /// <param name="degrees">degre qui serons transformer </param>
+        /// <param name="minutes">degre en minutes qui seront transformer </param>
+        /// <param name="seconds">degre en seconmds qui seront transformer</param>
+        /// <returns>les degres convertis en decimal</returns>
         private float ConvertToDecimalDegrees(float degrees, float minutes, float seconds)
         {
             float decimalDegrees = degrees + (minutes / 60) + (seconds / 3600);
             return decimalDegrees;
         }
 
+        /// <summary>
+        /// Convertis la longitude en coordone de map
+        /// </summary>
+        /// <param name="longitude">la longitude</param>
+        /// <param name="mapWidth">la largeur de la map</param>
+        /// <returns>la longitude convertis en coordonne de map</returns>
         private float ConvertToX(float longitude, float mapWidth)
         {
             float x = (longitude + 180) * (mapWidth / 360);
             return x;
         }
 
+        /// <summary>
+        /// Convertis la latitude en coordone de map
+        /// </summary>
+        /// <param name="latitude">la latitude</param>
+        /// <param name="mapHeight">la hauteur de la map</param>
+        /// <returns>la latitude convertis en coordonne de map</returns>
         private float ConvertToY(float latitude, float mapHeight)
         {
             float y = (90 - latitude) * (mapHeight / 180);
             return y;
         }
+
+        #endregion 
     }
 }

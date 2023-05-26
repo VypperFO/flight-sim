@@ -4,13 +4,22 @@ using Tp_02_02.model.Clients.TransportClients;
 
 namespace Tp_02_02.model.Clients
 {
+    /// <summary>
+    /// Facotry de client permmettant de creer tout type de clients facilement
+    /// </summary>
     public class ClientFactory
     {
         public ClientFactory()
         {
         }
 
-        public Client CreateClient(string clientType)
+        /// <summary>
+        /// creer un client avec comme type le parametre donner
+        /// </summary>
+        /// <param name="clientType">type du client voulue</param>
+        /// <returns>le client creer avec le type voulue</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static Client CreateClient(string clientType)
         {
             switch (clientType)
             {
@@ -29,7 +38,13 @@ namespace Tp_02_02.model.Clients
             }
         }
 
-        public TransportClient CreateTransportClient(string clientType)
+        /// <summary>
+        /// creer un client de transport avec comme type le parametre donner
+        /// </summary>
+        /// <param name="clientType">type du client voulue</param>
+        /// <returns>le client creer avec le type voulue</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static TransportClient CreateTransportClient(string clientType)
         {
             switch (clientType)
             {
@@ -42,6 +57,12 @@ namespace Tp_02_02.model.Clients
             }
         }
 
+        /// <summary>
+        /// creer une client special avec une position random assigner
+        /// </summary>
+        /// <param name="clientType">type du client voulue</param>
+        /// <returns>le client creer avec le type voulue</returns>
+        /// <exception cref="ArgumentException"></exception>
         public SpecialClient CreateSpecialClientWithRandomPos(string clientType)
         {
             SpecialClient specialClient;

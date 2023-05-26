@@ -11,7 +11,6 @@ namespace Tp_02_02.model
     public class Scenario
     {
         public List<Airport> AirportList { get; set; } // liste de tout les aeroports dans le scenario
-        public List<SpecialClient> SpecialClientList { get; set; } // liste de tout les clients special dans le scenario
         private State state; // etat du scenario 
         public int speed { get; set; } // vitesse du scenario
         public double time { get; set; } //temps du scenario en secondes
@@ -26,6 +25,8 @@ namespace Tp_02_02.model
             state = new ReadyState(this);
             AirportList = new List<Airport>();
         }
+
+        #region Main operations
 
         /// <summary>
         /// Effectue un tick du scenario
@@ -45,12 +46,71 @@ namespace Tp_02_02.model
         }
 
         /// <summary>
+        /// Creer des client special dans le scenario a des moments random
+        /// </summary>
+        private void InjectSpecialClients()
+        {
+            ClientFactory clientFactory;
+            if (time % 1800 == 0)
+            {
+                clientFactory = new ClientFactory();
+                SpecialClient fireClient = clientFactory.CreateSpecialClientWithRandomPos("Fire");
+                AssignEmergencyClients(fireClient);
+            }
+
+            if (time % 3600 == 0)
+            {
+                clientFactory = new ClientFactory();
+                SpecialClient rescueClient = clientFactory.CreateSpecialClientWithRandomPos("Rescue");
+                AssignEmergencyClients(rescueClient);
+            }
+
+            if (time % 1200 == 0)
+            {
+                clientFactory = new ClientFactory();
+                SpecialClient observerClient = clientFactory.CreateSpecialClientWithRandomPos("Observer");
+                AssignEmergencyClients(observerClient);
+            }
+        }
+
+        /// <summary>
+        /// Creer des client dans le scenario a des moments random
+        /// </summary>
+        private void InjectTransportClients()
+        {
+            if (time % 3600 == 0)
+            {
+                for (int i = 0; i < AirportList.Count; i++)
+                {
+                    AirportList[i].InjectClients(AirportList);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Utils
+
+        /// <summary>
+        /// assigne un client special a un aeroport
+        /// </summary>
+        /// <param name="emergencyClient">le client special</param>
+        private void AssignEmergencyClients(SpecialClient emergencyClient)
+        {
+            Airport closest = getNearestAirport(emergencyClient.Position, emergencyClient.GetType().Name);
+            if (closest != null)
+            {
+                closest.ClientList.Add(emergencyClient);
+            }
+        }
+
+        /// <summary>
         /// Donne l'aeroport le plus proche du client donner
         /// </summary>
         /// <param name="position">la position du client que l'areoport est comparer a</param>
         /// <param name="type">le type de client</param>
         /// <returns>l'aeroport la plus proche du client</returns>
-        public Airport getNearestAirport(Vector2 position, string type)
+        private Airport getNearestAirport(Vector2 position, string type)
         {
             int index = 0;
             float closest = 0;
@@ -96,63 +156,6 @@ namespace Tp_02_02.model
             return AirportList[index];
         }
 
-
-        /// <summary>
-        /// assigne un client special a un aeroport
-        /// </summary>
-        /// <param name="emergencyClient">le client special</param>
-        private void AssignEmergencyClients(SpecialClient emergencyClient)
-        {
-            Airport closest = getNearestAirport(emergencyClient.Position, emergencyClient.GetType().Name);
-            if (closest != null)
-            {
-                closest.ClientList.Add(emergencyClient);
-            }
-        }
-
-        /// <summary>
-        /// Creer des client special dans le scenario a des moments random
-        /// </summary>
-        private void InjectSpecialClients()
-        {
-            ClientFactory clientFactory = new ClientFactory();
-            if (time % 1800 == 0)
-            {
-                Console.WriteLine("Fire request");
-                SpecialClient fireClient = clientFactory.CreateSpecialClientWithRandomPos("Fire");
-                AssignEmergencyClients(fireClient);
-            }
-
-            if (time % 3600 == 0)
-            {
-                Console.WriteLine("Rescue request");
-                SpecialClient rescueClient = clientFactory.CreateSpecialClientWithRandomPos("Rescue");
-                AssignEmergencyClients(rescueClient);
-            }
-
-            if (time % 1200 == 0)
-            {
-                Console.WriteLine("Observer request");
-                SpecialClient observerClient = clientFactory.CreateSpecialClientWithRandomPos("Observer");
-                AssignEmergencyClients(observerClient);
-            }
-
-        }
-
-        /// <summary>
-        /// Creer des client dans le scenario a des moments random
-        /// </summary>
-        private void InjectTransportClients()
-        {
-            if (time % 3600 == 0)
-            {
-                for (int i = 0; i < AirportList.Count; i++)
-                {
-                    AirportList[i].InjectClients(AirportList);
-                }
-            }
-        }
-
         /// <summary>
         /// Affiche le temps du scenario
         /// </summary>
@@ -170,6 +173,10 @@ namespace Tp_02_02.model
         /// <returns>le state du scenario</returns>
         public State GetState() { return state; }
 
+        /// <summary>
+        /// Change le state du scenario pour lui donner en parametre
+        /// </summary>
+        /// <param name="state">state qui sera affecter au scenario</param>
         public void changeState(State state)
         {
             this.state = state;
@@ -180,5 +187,7 @@ namespace Tp_02_02.model
 
         // Facade
         public void Forward() { state.Forward(); }
+
+        #endregion
     }
 }

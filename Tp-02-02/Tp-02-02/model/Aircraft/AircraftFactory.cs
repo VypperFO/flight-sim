@@ -3,15 +3,21 @@ using Tp_02_02.model.Aircrafts.TransportAircrafts;
 
 namespace Tp_02_02.model.Aircrafts
 {
+    /// <summary>
+    /// Factory d'aircraft permmetant de creer des aircraft facilement
+    /// </summary>
     public class AircraftFactory
     {
-        private static AircraftFactory? factory;
+        private static AircraftFactory? factory; // factory de la classe
 
         private AircraftFactory()
         {
-            // Private constructor to prevent direct instantiation
+            // private constructor to prevent direct instantiation
         }
 
+        /// <summary>
+        /// singleton factory
+        /// </summary>
         public static AircraftFactory GetAircraftFactory
         {
             get
@@ -22,6 +28,12 @@ namespace Tp_02_02.model.Aircrafts
             }
         }
 
+        /// <summary>
+        /// creer une avion avec le type donner en paramettre
+        /// </summary>
+        /// <param name="type">type de l'avion voulue</param>
+        /// <returns>l'avion de type voulue</returns>
+        /// <exception cref="NotSupportedException"></exception>
         public static Aircraft CreateAircraft(string type)
         {
             switch (type)

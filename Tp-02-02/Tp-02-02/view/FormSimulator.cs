@@ -10,7 +10,7 @@ namespace Tp_02_02
     /// </summary>
     public partial class FormSimulator : Form
     {
-        private COTAI simulatorController; // controlleur du form
+        private COTAI cotai; // controlleur du form
 
         /// <summary>
         /// constructeur du form
@@ -24,7 +24,7 @@ namespace Tp_02_02
             button2.Enabled = false;
             button3.Enabled = false;
             button4.Enabled = false;
-            this.simulatorController = simulatorController;
+            this.cotai = simulatorController;
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Tp_02_02
                     var filePath = openFileDialog1.FileName;
                     using (Stream str = openFileDialog1.OpenFile())
                     {
-                        simulatorController.Load(filePath);
+                        cotai.Load(filePath);
                     }
                 }
                 catch (SecurityException ex)
@@ -301,7 +301,7 @@ namespace Tp_02_02
                 button1.Enabled = true;
 
             }
-            simulatorController.Play();
+            cotai.Play();
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace Tp_02_02
         /// </summary>
         public void setAirportsName()
         {
-            string[] airportsTotal = simulatorController.AirportsToStrings();
+            string[] airportsTotal = cotai.AirportsToStrings();
             List<string> names = new List<string>();
             string[] temp;
             foreach (string airport in airportsTotal)
@@ -330,7 +330,7 @@ namespace Tp_02_02
         /// <param name="airportName">le nom de l'aeroport selectionner</param>
         public void setAircrafts(string airportName)
         {
-            string[] airportsTotal = simulatorController.AirportsToStrings();
+            string[] airportsTotal = cotai.AirportsToStrings();
             List<string> names = new List<string>();
             string[] temp;
             string[] temp2;
@@ -386,7 +386,7 @@ namespace Tp_02_02
             {
                 listBox2.Items.Clear();
             }
-            string[] airportsTotal = simulatorController.AirportsToStrings();
+            string[] airportsTotal = cotai.AirportsToStrings();
             string[] temp;
             string[] temp2;
             string[] temp3;
@@ -448,7 +448,7 @@ namespace Tp_02_02
         /// <summary>
         /// Donne le texte selectionner dans le list box des aeroport 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>le texte selectionner dans le list box des aeroport </returns>
         public string getListbox1Selected()
         {
             string Text = String.Empty;
@@ -482,7 +482,7 @@ namespace Tp_02_02
         /// <param name="e">Event listener</param>
         private void button3_Click(object sender, EventArgs e)
         {
-            simulatorController.IncreaseSpeed();
+            cotai.IncreaseSpeed();
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace Tp_02_02
         /// <param name="e">Event listener</param>
         private void button4_Click(object sender, EventArgs e)
         {
-            simulatorController.DecreaseSpeed();
+            cotai.DecreaseSpeed();
         }
 
         /// <summary>

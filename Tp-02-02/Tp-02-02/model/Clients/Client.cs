@@ -2,6 +2,9 @@
 {
     public class Client
     {
+        /// <summary>
+        /// Classe client
+        /// </summary>
         public Client() { }
     }
 }
