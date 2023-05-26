@@ -40,7 +40,7 @@ namespace Tp_02_02.controller
 
                     // Fonction pour afficher les feux et les secours
                     // (!!! ATTENTION, TRES MAL OPTIMIZER CAR CREATION DE NOMBREUX OBJETS PictureBox ET Image !!!)
-                    placeFireAndRescueOnMap(airport);
+                    // placeFireAndRescueOnMap(airport);
 
                     foreach (Aircraft aircraft in airport.AircraftList)
                     {
