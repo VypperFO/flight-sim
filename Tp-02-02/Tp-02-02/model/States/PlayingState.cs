@@ -1,6 +1,4 @@
-﻿using Tp_02_02.controller;
-
-namespace Tp_02_02.model.States
+﻿namespace Tp_02_02.model.States
 {
     public class PlayingState : State
     {

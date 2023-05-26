@@ -16,6 +16,9 @@ namespace Tp_02_02.model
         public int speed { get; set; } // vitesse du scenario
         public double time { get; set; } //temps du scenario en secondes
 
+        /// <summary>
+        /// initialise les donnes membre du scenario
+        /// </summary>
         public Scenario()
         {
             speed = 1000;
@@ -24,6 +27,10 @@ namespace Tp_02_02.model
             AirportList = new List<Airport>();
         }
 
+        /// <summary>
+        /// Effectue un tick du scenario
+        /// </summary>
+        /// <returns>le scenario apres le tick a ete fait</returns>
         public Scenario PerformOperations()
         {
             for (int i = 0; i < AirportList.Count; i++)
@@ -37,6 +44,12 @@ namespace Tp_02_02.model
             return this;
         }
 
+        /// <summary>
+        /// Donne l'aeroport le plus proche du client donner
+        /// </summary>
+        /// <param name="position">la position du client que l'areoport est comparer a</param>
+        /// <param name="type">le type de client</param>
+        /// <returns>l'aeroport la plus proche du client</returns>
         public Airport getNearestAirport(Vector2 position, string type)
         {
             int index = 0;
@@ -84,7 +97,10 @@ namespace Tp_02_02.model
         }
 
 
-
+        /// <summary>
+        /// assigne un client special a un aeroport
+        /// </summary>
+        /// <param name="emergencyClient">le client special</param>
         private void AssignEmergencyClients(SpecialClient emergencyClient)
         {
             Airport closest = getNearestAirport(emergencyClient.Position, emergencyClient.GetType().Name);
@@ -94,6 +110,9 @@ namespace Tp_02_02.model
             }
         }
 
+        /// <summary>
+        /// Creer des client special dans le scenario a des moments random
+        /// </summary>
         private void InjectSpecialClients()
         {
             ClientFactory clientFactory = new ClientFactory();
@@ -104,7 +123,6 @@ namespace Tp_02_02.model
                 AssignEmergencyClients(fireClient);
             }
 
-            // CHANGE BACK TO 3600 THIS MESSSAGE IS APPROVED BY BARACK OBAMA. "I AM BARACK OBAMA AND I APPROVE THIS MESSAGE -_-"
             if (time % 3600 == 0)
             {
                 Console.WriteLine("Rescue request");
@@ -121,6 +139,9 @@ namespace Tp_02_02.model
 
         }
 
+        /// <summary>
+        /// Creer des client dans le scenario a des moments random
+        /// </summary>
         private void InjectTransportClients()
         {
             if (time % 3600 == 0)
@@ -132,6 +153,10 @@ namespace Tp_02_02.model
             }
         }
 
+        /// <summary>
+        /// Affiche le temps du scenario
+        /// </summary>
+        /// <returns>le temps du scenario</returns>
         public string giveMeTheTime()
         {
             double f = time;
@@ -139,6 +164,10 @@ namespace Tp_02_02.model
             return string.Format("{0}:{1}:{2}:{3}", ((int)t.TotalHours), t.Minutes, t.Seconds, t.Milliseconds);
         }
 
+        /// <summary>
+        /// Donne le state du scenario en se moment
+        /// </summary>
+        /// <returns>le state du scenario</returns>
         public State GetState() { return state; }
 
         public void changeState(State state)

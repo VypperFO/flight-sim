@@ -11,9 +11,12 @@ using Tp_02_02.model.Clients.TransportClients;
 
 namespace Tp_02_02.model
 {
+    /// <summary>
+    /// Classe aeroport contenant plusieurs type d'avion et client
+    /// </summary>
     public class Airport
     {
-        public string Name { get; set; }
+        public string Name { get; set; } // nom de l'aeroport
         public string Coords { get; set; }
         public int MinPassenger { get; set; }
         public int MaxPassenger { get; set; }
@@ -104,6 +107,7 @@ namespace Tp_02_02.model
                 Aircraft aircraft = AircraftList[aircraftIndex];
                 TransportClient transportClient = (TransportClient)ClientList[clientIndex];
 
+
                 // Change state
                 aircraft.changeState(new FlyingState(aircraft));
                 //Console.WriteLine($"State changed: {aircraft.GetState}");
@@ -117,7 +121,13 @@ namespace Tp_02_02.model
                 airports[airportDestinationIndex].AircraftList.Add(aircraft);
 
                 // Remove client and plane
-                ClientList.RemoveAt(clientIndex);
+                transportClient.NumberOfClients -= aircraft.Capacity;
+
+                if (transportClient.NumberOfClients <= 0)
+                {
+                    ClientList.RemoveAt(clientIndex);
+                }
+
                 AircraftList.RemoveAt(aircraftIndex);
             }
         }
@@ -171,7 +181,6 @@ namespace Tp_02_02.model
                 int randRangePassenger = rand.Next(MinPassenger, MaxPassenger);
                 int randRangeMerchandise = rand.Next(MinMerchandise, MaxMerchandise);
 
-                TransportClient passengerClient = clientFactory.CreateTransportClient("Passenger");
                 Airport randAirport = airports[rand.Next(airports.Count)];
 
                 // Removes itself from possible airport destination
@@ -180,6 +189,7 @@ namespace Tp_02_02.model
                     randAirport = airports[rand.Next(airports.Count)];
                 }
 
+                TransportClient passengerClient = clientFactory.CreateTransportClient("Passenger");
                 passengerClient.Destination = randAirport;
                 passengerClient.NumberOfClients = randRangePassenger;
 
@@ -187,8 +197,32 @@ namespace Tp_02_02.model
                 merchandiseClient.Destination = randAirport;
                 merchandiseClient.NumberOfClients = randRangeMerchandise;
 
-                ClientList.Add(passengerClient);
-                ClientList.Add(merchandiseClient);
+                Client existingPassengerClient = ClientList.Find(client => client is TransportClient transportClient && transportClient.Destination == passengerClient.Destination);
+                Client existingMerchandiseClient = ClientList.Find(client => client is TransportClient transportClient && transportClient.Destination == merchandiseClient.Destination);
+
+                if (existingPassengerClient != null)
+                {
+                    if (existingPassengerClient is TransportClient transportExistingClient)
+                    {
+                        transportExistingClient.NumberOfClients += passengerClient.NumberOfClients;
+                    }
+                }
+                else
+                {
+                    ClientList.Add(passengerClient);
+                }
+
+                if (existingMerchandiseClient != null)
+                {
+                    if (existingPassengerClient is TransportClient transportExistingClient)
+                    {
+                        transportExistingClient.NumberOfClients += merchandiseClient.NumberOfClients;
+                    }
+                }
+                else
+                {
+                    ClientList.Add(merchandiseClient);
+                }
             }
         }
 

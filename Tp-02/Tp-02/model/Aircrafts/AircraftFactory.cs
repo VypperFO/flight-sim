@@ -44,23 +44,11 @@ namespace Tp_02.model.Aircrafts
                 case "Cargo":
                     return new CargoAircraft();
                 case "Citerne":
-                    TankAircraft tank = new()
-                    {
-                        DepartureAirport = airportGPS
-                    };
-                    return tank;
+                    return new TankAircraft();
                 case "Observateur":
-                    ObserverAircraft observer = new()
-                    {
-                        DepartureAirport = airportGPS
-                    };
-                    return observer;
+                    return new ObserverAircraft() ;
                 case "Helicoptère":
-                    HelicopterAircraft heli = new()
-                    {
-                        DepartureAirport = airportGPS
-                    };
-                    return heli;
+                    return new HelicopterAircraft();
                 default:
                     throw new NotSupportedException($"Aircraft type {type} is not supported.");
             }

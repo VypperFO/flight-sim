@@ -3,56 +3,107 @@
   <AirportList>
     <Airport>
       <Name>yul</Name>
-      <Coords>-78° 0' 0" O , 41° 5' 59" N</Coords>
-      <MinPassenger>1</MinPassenger>
-      <MaxPassenger>20</MaxPassenger>
-      <MinMerchandise>1</MinMerchandise>
-      <MaxMerchandise>20</MaxMerchandise>
+      <Coords>-81° 35' 59" O , 39° 17' 59" N</Coords>
+      <MinPassenger>2</MinPassenger>
+      <MaxPassenger>10</MaxPassenger>
+      <MinMerchandise>2</MinMerchandise>
+      <MaxMerchandise>10</MaxMerchandise>
       <AircraftList>
         <CargoAircraft>
-          <Name>cargo-yul</Name>
-          <Capacity>10</Capacity>
+          <Name>yul-cargo</Name>
+          <Capacity>5</Capacity>
         </CargoAircraft>
         <PassengerAircraft>
-          <Name>passager-yul</Name>
-          <Capacity>10</Capacity>
+          <Name>yul-passager</Name>
+          <Capacity>5</Capacity>
         </PassengerAircraft>
+        <HelicopterAircraft>
+          <Name>yul-heli</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>-81° 35' 59" O , 39° 17' 59" N</DepartureAirport>
+        </HelicopterAircraft>
+        <ObserverAircraft>
+          <Name>yul-ob</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>-81° 35' 59" O , 39° 17' 59" N</DepartureAirport>
+        </ObserverAircraft>
+        <TankAircraft>
+          <Name>yul-cit</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>-81° 35' 59" O , 39° 17' 59" N</DepartureAirport>
+          <IsMissionDone>false</IsMissionDone>
+          <IsFull>true</IsFull>
+        </TankAircraft>
       </AircraftList>
     </Airport>
     <Airport>
       <Name>tokyo</Name>
-      <Coords>88° 11' 59" E , -4° 48' 0" S</Coords>
-      <MinPassenger>1</MinPassenger>
+      <Coords>83° 24' 0" E , -3° 17' 59" S</Coords>
+      <MinPassenger>2</MinPassenger>
+      <MaxPassenger>10</MaxPassenger>
+      <MinMerchandise>2</MinMerchandise>
+      <MaxMerchandise>10</MaxMerchandise>
+      <AircraftList>
+        <TankAircraft>
+          <Name>tokyo-cit</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>83° 24' 0" E , -3° 17' 59" S</DepartureAirport>
+          <IsMissionDone>false</IsMissionDone>
+          <IsFull>true</IsFull>
+        </TankAircraft>
+        <PassengerAircraft>
+          <Name>tokyo-pass</Name>
+          <Capacity>5</Capacity>
+        </PassengerAircraft>
+        <CargoAircraft>
+          <Name>tokyo-merch</Name>
+          <Capacity>5</Capacity>
+        </CargoAircraft>
+        <ObserverAircraft>
+          <Name>tokyo-ob</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>83° 24' 0" E , -3° 17' 59" S</DepartureAirport>
+        </ObserverAircraft>
+        <HelicopterAircraft>
+          <Name>tokyo-heli</Name>
+          <Capacity>1</Capacity>
+          <DepartureAirport>83° 24' 0" E , -3° 17' 59" S</DepartureAirport>
+        </HelicopterAircraft>
+      </AircraftList>
+    </Airport>
+    <Airport>
+      <Name>osaka</Name>
+      <Coords>-104° 24' 0" O , -17° 6' 0" S</Coords>
+      <MinPassenger>2</MinPassenger>
       <MaxPassenger>20</MaxPassenger>
-      <MinMerchandise>1</MinMerchandise>
+      <MinMerchandise>2</MinMerchandise>
       <MaxMerchandise>20</MaxMerchandise>
       <AircraftList>
         <HelicopterAircraft>
-          <Name>heli-yul</Name>
+          <Name>osa-heli</Name>
           <Capacity>1</Capacity>
-          <DepartureAirport>88° 11' 59" E , -4° 48' 0" S</DepartureAirport>
-        </HelicopterAircraft>
-        <HelicopterAircraft>
-          <Name>heli-tokyo</Name>
-          <Capacity>1</Capacity>
-          <DepartureAirport>88° 11' 59" E , -4° 48' 0" S</DepartureAirport>
+          <DepartureAirport>-104° 24' 0" O , -17° 6' 0" S</DepartureAirport>
         </HelicopterAircraft>
         <TankAircraft>
-          <Name>tank-tokyo</Name>
+          <Name>osa-cit</Name>
           <Capacity>1</Capacity>
-          <DepartureAirport>88° 11' 59" E , -4° 48' 0" S</DepartureAirport>
+          <DepartureAirport>-104° 24' 0" O , -17° 6' 0" S</DepartureAirport>
           <IsMissionDone>false</IsMissionDone>
           <IsFull>true</IsFull>
         </TankAircraft>
         <ObserverAircraft>
-          <Name>observer-tokyo</Name>
+          <Name>osa-ob</Name>
           <Capacity>1</Capacity>
-          <DepartureAirport>88° 11' 59" E , -4° 48' 0" S</DepartureAirport>
+          <DepartureAirport>-104° 24' 0" O , -17° 6' 0" S</DepartureAirport>
         </ObserverAircraft>
         <PassengerAircraft>
-          <Name>pass-tokyo</Name>
+          <Name>osa-pass</Name>
           <Capacity>10</Capacity>
         </PassengerAircraft>
+        <CargoAircraft>
+          <Name>osa-merch</Name>
+          <Capacity>10</Capacity>
+        </CargoAircraft>
       </AircraftList>
     </Airport>
   </AirportList>

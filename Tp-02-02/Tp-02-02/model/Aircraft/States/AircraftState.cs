@@ -4,7 +4,7 @@
     {
         protected Aircraft aircraft;
         public AircraftState() { }
-        public AircraftState(Aircraft aircraft) 
+        public AircraftState(Aircraft aircraft)
         {
             this.aircraft = aircraft;
         }

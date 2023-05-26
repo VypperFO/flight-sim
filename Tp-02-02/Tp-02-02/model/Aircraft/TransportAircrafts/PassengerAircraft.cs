@@ -1,6 +1,6 @@
 ﻿namespace Tp_02_02.model.Aircrafts.TransportAircrafts
 {
-    public class PassengerAircraft: Aircraft
+    public class PassengerAircraft : Aircraft
     {
     }
 }

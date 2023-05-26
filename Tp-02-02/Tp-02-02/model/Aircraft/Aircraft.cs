@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Tp_02_02.model.Aircrafts.States;
-using Tp_02_02.model.Clients.SpecialClients;
 
 namespace Tp_02_02.model.Aircrafts
 {
@@ -14,15 +13,14 @@ namespace Tp_02_02.model.Aircrafts
         public int Capacity { get; set; }
         public int speed { get; set; }
 
-        public Aircraft() {
-            speed = 20;
+        public Aircraft()
+        {
+            speed = 15;
             state = new WaitingState(this);
         }
 
         public virtual void GoTo(Vector2 targetPosition)
         {
-            //Console.WriteLine($"Plane: {Name}, x: {CurrentPosition.X}, y: {CurrentPosition.Y}");
-
             float distance = Vector2.Distance(CurrentPosition, targetPosition);
             float step = speed / distance;
 
@@ -31,7 +29,6 @@ namespace Tp_02_02.model.Aircrafts
             if (Vector2WithinError(CurrentPosition, targetPosition, 10))
             {
                 changeState(new WaitingState(this));
-                Console.WriteLine($"{Name} changed state to {GetState().GetType().Name}");
             }
         }
 

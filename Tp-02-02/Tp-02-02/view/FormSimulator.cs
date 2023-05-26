@@ -123,7 +123,7 @@ namespace Tp_02_02
             double y = (90 - latitude) * (mapHeight / 180.0);
             return y;
         }
-        
+
         /// <summary>
         /// Place les aeroport et leur nom sur la map
         /// </summary>
@@ -189,7 +189,8 @@ namespace Tp_02_02
             pictureBox.Location = new Point((int)GPSx, (int)GPSy);
             if (panel1.InvokeRequired)
             {
-                panel1.Invoke(new MethodInvoker(delegate { 
+                panel1.Invoke(new MethodInvoker(delegate
+                {
                     panel1.Controls.Add(pictureBox);
                 }));
             }
@@ -212,7 +213,8 @@ namespace Tp_02_02
             pictureBox.Location = new Point((int)GPSx, (int)GPSy);
             if (panel1.InvokeRequired)
             {
-                panel1.Invoke(new MethodInvoker(delegate {
+                panel1.Invoke(new MethodInvoker(delegate
+                {
                     panel1.Controls.Add(pictureBox);
                 }));
             }
@@ -332,15 +334,22 @@ namespace Tp_02_02
             List<string> names = new List<string>();
             string[] temp;
             string[] temp2;
+            string[] temp4;
             string[] temp3;
+
+
             foreach (string item in airportsTotal)
             {
                 temp = item.Split(".");
-                temp2 = temp[1].Split(",");
+                temp4 = temp[1].Split(';');
+                temp2 = temp4[0].Split(",");
                 temp3 = item.Split(",");
                 if (temp3[0] == airportName)
                 {
-                    names.Add(temp2[0]);
+                    foreach (string item2 in temp2)
+                    {
+                        names.Add(item2);
+                    }
                 }
             }
             foreach (string item in names)
@@ -408,7 +417,7 @@ namespace Tp_02_02
             }
 
         }
-        
+
         /// <summary>
         /// Change les listbox clients et avions en dependant de l'aeroport choissis.
         /// </summary>
@@ -449,7 +458,7 @@ namespace Tp_02_02
             });
             return Text;
         }
-        
+
         /// <summary>
         /// Actualise le temps dans le form pour le temps du scenario
         /// </summary>
@@ -500,6 +509,16 @@ namespace Tp_02_02
                 graphics.DrawLine(pen, startPoint, endPoint);
                 pen.Dispose();
             }
+        }
+
+        /// <summary>
+        /// Ferme le programme quand le bouton x est fermer
+        /// </summary>
+        /// <param name="sender">Personne qui a fait l'action</param>
+        /// <param name="e">event listener</param>
+        private void FormSimulator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Dispose();
         }
     }
 }

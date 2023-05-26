@@ -5,7 +5,6 @@
     /// </summary>
     public class SpecialAircraft : Aircraft
     {
-        public string DepartureAirport { get; set; }
         public new int Capacity = 1; /// capacity de l'aircraft
     }
 }
