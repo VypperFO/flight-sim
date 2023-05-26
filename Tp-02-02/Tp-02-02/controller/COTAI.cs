@@ -120,6 +120,14 @@ namespace Tp_02_02.controller
         #region Utils
 
         /// <summary>
+        /// reset la vitesse du scenario a sa vitesse de base
+        /// </summary>
+        public void resetSpeed()
+        {
+            scenario.speed = 1000;
+        }
+
+        /// <summary>
         /// dit au scenario de jouer
         /// </summary>
         public void Play()

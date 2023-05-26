@@ -299,6 +299,7 @@ namespace Tp_02_02
                 button3.Enabled = false;
                 button4.Enabled = false;
                 button1.Enabled = true;
+                cotai.resetSpeed();
 
             }
             cotai.Play();
