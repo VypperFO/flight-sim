@@ -1,0 +1,108 @@
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (9)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+C:\Users\felix\Desktop\tp-02-oop2\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+C:\Users\2173242\Desktop\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (10)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.exe
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.deps.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.runtimeconfig.json
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\bin\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.AssemblyReference.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.Properties.Resources.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp_02_02.FormSimulator.resources
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.GenerateResource.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.GeneratedMSBuildEditorConfig.editorconfig
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfoInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.AssemblyInfo.cs
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.csproj.CoreCompileInputs.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\refint\Tp-02-02.dll
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.pdb
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\Tp-02-02.genruntimeconfig.cache
+D:\ONE DRIVEW\OneDrive - Cegep de Lanaudiere\Bureau\New folder (11)\tp-02-oop\Tp-02-02\Tp-02-02\obj\Debug\net6.0-windows\ref\Tp-02-02.dll
