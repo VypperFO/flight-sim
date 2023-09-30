@@ -2,6 +2,8 @@
 ## Overview
 The Flight Traffic/Path Simulator is a Windows Forms application designed to simulate air traffic scenarios. It consists of two main components: a scenario generator and a simulator. The scenario generator creates airports and airplanes, generating an XML file that serves as input for the simulator. The simulator then uses this XML data to generate random passengers and cargo, and it displays the movement of airplanes on a map.
 
+![sim](https://github.com/VypperFO/tp-02-oop/assets/30783599/f2eaceeb-12ac-4d4e-a8c6-29476255731f)
+
 ## Features
 ### Scenario Generator
 The Scenario Generator is responsible for creating the initial scenario for the simulator. It provides the following functionalities:
